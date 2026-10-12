@@ -549,34 +549,50 @@
       transform: translateY(-2px);
     }
 
-    /* Standard Edition: Edles Gold #9d9257 */
-    .btn-buy {
-      background: linear-gradient(135deg, #b5a867 0%, #9d9257 50%, #7d7340 100%);
-      color: #0d0c07;
-      border: 1px solid rgba(220, 209, 142, 0.85);
-      box-shadow: 0 0 22px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    /* Standard Edition (79,99 €): Brushed Titanium / Silver (#7d7c78) */
+    .btn-buy-standard {
+      background: linear-gradient(135deg, #9b9a95 0%, #7d7c78 50%, #605f5b 100%);
+      color: #0e0e0c;
+      border: 1px solid rgba(195, 194, 188, 0.85);
+      box-shadow: 0 0 20px rgba(125, 124, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
       font-weight: 800;
     }
 
-    .btn-buy:hover {
-      background: linear-gradient(135deg, #c7bb74 0%, #beb376 50%, #9d9257 100%);
-      box-shadow: 0 0 35px rgba(190, 179, 118, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    .btn-buy-standard:hover {
+      background: linear-gradient(135deg, #b5b4af 0%, #92918c 50%, #7d7c78 100%);
+      box-shadow: 0 0 32px rgba(195, 194, 188, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.85);
       transform: translateY(-2px);
       color: #000000;
     }
 
-    /* Ultimate Suite: Radiant Shimmering Gold */
+    /* Ultimate Suite (129,99 €): Edles vir2ose Studio Gold */
     .btn-buy-ultimate {
-      background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #9d9257 100%);
-      color: #000000;
-      border: 1px solid #ffe600;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      background: linear-gradient(135deg, #b5a867 0%, #9d9257 50%, #7d7340 100%);
+      color: #0d0c07;
+      border: 1px solid rgba(220, 209, 142, 0.85);
+      box-shadow: 0 0 25px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.45);
       font-weight: 800;
     }
 
     .btn-buy-ultimate:hover {
-      background: linear-gradient(135deg, #ffe033 0%, #ffd700 50%, #b5a867 100%);
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.75), inset 0 1px 0 #ffffff;
+      background: linear-gradient(135deg, #c7bb74 0%, #beb376 50%, #9d9257 100%);
+      box-shadow: 0 0 35px rgba(190, 179, 118, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+      color: #000000;
+    }
+
+    /* Standard Button Fallback */
+    .btn-buy {
+      background: linear-gradient(135deg, #9b9a95 0%, #7d7c78 50%, #605f5b 100%);
+      color: #0e0e0c;
+      border: 1px solid rgba(195, 194, 188, 0.85);
+      box-shadow: 0 0 20px rgba(125, 124, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      font-weight: 800;
+    }
+
+    .btn-buy:hover {
+      background: linear-gradient(135deg, #b5b4af 0%, #92918c 50%, #7d7c78 100%);
+      box-shadow: 0 0 32px rgba(195, 194, 188, 0.6);
       transform: translateY(-2px);
       color: #000000;
     }
