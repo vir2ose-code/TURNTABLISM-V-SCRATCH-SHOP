@@ -1,14 +1,14 @@
-# DJ V-SCRATCH LIVE | vir2oseSOUND
+DJ V-SCRATCH LIVE | vir2oseSOUND
 > **Next-Generation Turntablism & Immersive DJ Virtual Studio**  
 > Official Website: [turntablism.waldemar-krucinski.com](https://turntablism.waldemar-krucinski.com)  
 > Master Developer & Creator: **Waldemar Krucinski (vir2ose)**
 
 ---
 
-## 🎧 Overview
+Overview
 **DJ V-SCRATCH LIVE** is a high-performance standalone DJ workstation engineered in pure C++20 and JUCE. Designed for professional turntablists, club performers, and audio purists, it combines physical-grade vinyl scratch emulation, 3D spatial audio placement, and sample-accurate video/karaoke synchronization.
 
-### ✨ Key Modules & Architecture
+Key Modules & Architecture
 
 1. **Dual Vinyl Turntable Engine (`DJ V-SCRATCH LIVE`)**
    - High-precision tactile vinyl physics with zero-latency response.
@@ -39,7 +39,7 @@
 
 ---
 
-## 🌐 Trilingual Web Showcase
+Trilingual Web Showcase
 The repository hosts the official landing page for **DJ V-SCRATCH LIVE**, featuring:
 - **Languages Supported**:
   - 🇬🇧 **English (Primary / International)**
@@ -52,7 +52,7 @@ The repository hosts the official landing page for **DJ V-SCRATCH LIVE**, featur
 
 ---
 
-## 🚀 Deployment & Hosting
+Deployment & Hosting
 This site is published via **GitHub Pages** with custom domain routing:
 - **CNAME**: `turntablism.waldemar-krucinski.com`
 - **Main file**: `index.html`
@@ -60,6 +60,6 @@ This site is published via **GitHub Pages** with custom domain routing:
 
 ---
 
-## ⚖️ License & Rights
+License & Rights
 © 2026 **Waldemar Krucinski (vir2ose)**. All rights reserved.  
 *All trademarks, designs, and proprietary audio engines belong to vir2oseSOUND.*
