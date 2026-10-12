@@ -79,24 +79,24 @@
       object-fit: cover;
       opacity: 0;
       transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: brightness(0.42) contrast(1.15) saturate(0.9);
+      filter: brightness(0.58) contrast(1.18) saturate(1.05);
       will-change: opacity;
     }
 
     .bg-video-layer.active {
-      opacity: 0.24;
+      opacity: 0.44; /* 20% more presence as requested */
     }
 
-    /* Dark cinematic film grain & gradient overlay to preserve sharp readable text */
+    /* Dark cinematic film grain & gradient overlay to preserve sharp readable text without obscuring video */
     .bg-video-scrim {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(3, 3, 5, 0.45) 0%, rgba(3, 3, 5, 0.88) 85%);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      background: radial-gradient(circle at center, rgba(3, 3, 5, 0.28) 0%, rgba(3, 3, 5, 0.78) 90%);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
     }
 
     /* =========================================================================
@@ -218,6 +218,109 @@
       object-fit: cover;
       display: block;
       border-radius: 2px;
+    }
+
+    /* Hamburger Toggle Button */
+    .hamburger-btn {
+      display: none;
+      background: rgba(10, 10, 16, 0.7);
+      border: 1px solid rgba(190, 179, 118, 0.4);
+      border-radius: 6px;
+      padding: 8px 10px;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 100;
+      transition: all 0.25s ease;
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-light);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hamburger-btn.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger-btn.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Drawer Overlay */
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 82%;
+      max-width: 320px;
+      height: 100vh;
+      background: rgba(8, 8, 12, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-left: 1px solid rgba(190, 179, 118, 0.35);
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      padding: 90px 30px 40px 30px;
+      gap: 28px;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -15px 0 45px rgba(0, 0, 0, 0.9);
+    }
+
+    .mobile-menu-drawer.open {
+      right: 0;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .mobile-nav-links a {
+      color: #eaeaf2;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      display: block;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(157, 146, 87, 0.15);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .mobile-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-drawer-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* =========================================================================
@@ -595,23 +698,32 @@
       font-weight: 500;
     }
 
-    /* Footer */
+    /* Footer - Crisp, High-Contrast & Solid (kein Verwischen) */
     footer {
-      border-top: 1px solid rgba(157, 146, 87, 0.2);
-      padding: 50px 40px;
-      background: #020204;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid rgba(190, 179, 118, 0.45);
+      padding: 55px 40px;
+      background: #020204; /* Solid, crisp background */
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      letter-spacing: 1px;
+      color: #b8bac7; /* High contrast sharp text */
+      font-size: 0.88rem;
+      letter-spacing: 1.2px;
+      box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.85);
     }
 
     footer .brand {
       color: var(--gold-light);
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+      text-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    footer p {
+      color: #9ea0b0;
+      margin: 4px 0;
     }
 
     /* =========================================================================
@@ -631,6 +743,28 @@
       }
     }
 
+    /* Mobile & Tablet Breakpoint: Hide linear nav, activate Hamburger */
+    @media (max-width: 900px) {
+      .navbar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(157, 146, 87, 0.15);
+      }
+
+      .nav-links {
+        display: none !important; /* Replaced by Hamburger Drawer */
+      }
+
+      .hamburger-btn {
+        display: flex;
+      }
+    }
+
     /* Smartphone Breakpoint (<= 768px) */
     @media (max-width: 768px) {
       .hero-section {
@@ -638,29 +772,6 @@
         padding: 16px 20px 48px 20px;
         background-size: cover;
         background-position: center 20%;
-      }
-
-      .navbar {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(157, 146, 87, 0.15);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 14px;
-        list-style: none;
-        flex-wrap: wrap;
-      }
-
-      .nav-links a {
-        font-size: 0.72rem;
-        letter-spacing: 1px;
       }
 
       .lang-switcher {
@@ -823,18 +934,7 @@
     /* Small Smartphones (<= 480px) */
     @media (max-width: 480px) {
       .navbar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .nav-links {
-        justify-content: center;
-        gap: 10px 14px;
-      }
-
-      .nav-links a {
-        font-size: 0.68rem;
+        gap: 10px;
       }
 
       .cta-wrapper {
@@ -901,7 +1001,30 @@
           <img src="PL.png" alt="Polski">
         </button>
       </div>
+
+      <!-- Mobile & Tablet Hamburger Toggle Button -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+
+    <!-- Mobile Drawer Overlay & Backdrop -->
+    <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#features" data-i18n="nav.features" class="drawer-link">FEATURES</a></li>
+        <li><a href="#spatial" data-i18n="nav.spatial" class="drawer-link">3D SPATIAL</a></li>
+        <li><a href="#karaoke" data-i18n="nav.video" class="drawer-link">V-VIDEO</a></li>
+        <li><a href="#tools" data-i18n="nav.tools" class="drawer-link">TOOLS</a></li>
+        <li><a href="#specs" data-i18n="nav.specs" class="drawer-link">SPECS</a></li>
+      </ul>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px;">
+        <a href="#trial" class="btn btn-trial drawer-link" data-i18n="hero.btnTrial" style="width: 100%;">14-Day Free Trial</a>
+        <a href="#buy" class="btn btn-buy drawer-link" data-i18n="hero.btnBuy" style="width: 100%;">Get Lifetime License</a>
+      </div>
+    </div>
 
     <div class="cta-wrapper">
       <div class="badge-bar">
@@ -1495,6 +1618,43 @@
 
     // Initial check
     updateBackgroundVideoOnScroll();
+
+    /* =========================================================================
+       MOBILE & TABLET HAMBURGER DRAWER INTERACTION
+       ========================================================================= */
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const drawerLinks = document.querySelectorAll('.drawer-link');
+
+    function toggleMobileDrawer(open) {
+      const isOpen = open !== undefined ? open : !mobileDrawer.classList.contains('open');
+      if (isOpen) {
+        mobileDrawer.classList.add('open');
+        drawerBackdrop.classList.add('active');
+        hamburgerBtn.classList.add('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden'; // prevent bg scroll while drawer is open
+      } else {
+        mobileDrawer.classList.remove('open');
+        drawerBackdrop.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => toggleMobileDrawer());
+    }
+
+    if (drawerBackdrop) {
+      drawerBackdrop.addEventListener('click', () => toggleMobileDrawer(false));
+    }
+
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', () => toggleMobileDrawer(false));
+    });
   </script>
 </body>
 </html>
