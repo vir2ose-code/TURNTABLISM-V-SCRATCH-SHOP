@@ -49,17 +49,9 @@
       width: 100%;
       max-width: 1600px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       z-index: 10;
-    }
-
-    .nav-brand {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      color: #00d2ff;
-      text-transform: uppercase;
     }
 
     .nav-links {
@@ -148,6 +140,9 @@
     }
 
     @media (max-width: 768px) {
+      .navbar {
+        justify-content: center;
+      }
       .btn-group {
         flex-direction: column;
         width: 100%;
@@ -165,7 +160,6 @@
 
   <header class="hero-section">
     <nav class="navbar">
-      <div class="nav-brand">vir2oseSOUND</div>
       <ul class="nav-links">
         <li><a href="#features">FEATURES</a></li>
         <li><a href="#spatial">3D SPATIAL</a></li>
