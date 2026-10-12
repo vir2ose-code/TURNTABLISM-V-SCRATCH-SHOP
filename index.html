@@ -928,10 +928,13 @@
     /* Smartphone Breakpoint (<= 768px) */
     @media (max-width: 768px) {
       .hero-section {
-        min-height: auto;
-        padding: 16px 20px 48px 20px;
+        min-height: 100vh;
+        padding: 16px 20px 40px 20px;
         background-size: cover;
-        background-position: center 20%;
+        background-position: center top;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .lang-switcher {
@@ -946,7 +949,9 @@
       }
 
       .cta-wrapper {
-        margin-top: 280px;
+        margin-top: auto;
+        padding-top: 320px; /* Generous breathing room so buttons sit comfortably below background consoles */
+        padding-bottom: 20px;
         gap: 16px;
         width: 100%;
       }
@@ -984,7 +989,9 @@
 
       /* Section Container */
       .section-wrap {
-        padding: 55px 18px;
+        padding: 60px 18px;
+        position: relative;
+        z-index: 5;
       }
 
       .section-tag {
@@ -1093,12 +1100,18 @@
 
     /* Small Smartphones (<= 480px) */
     @media (max-width: 480px) {
+      .hero-section {
+        min-height: auto;
+        padding: 16px 16px 36px 16px;
+      }
+
       .navbar {
         gap: 10px;
       }
 
       .cta-wrapper {
-        margin-top: 240px;
+        margin-top: auto;
+        padding-top: 280px;
       }
 
       .section-title {
@@ -1713,12 +1726,6 @@
         "modal.update_p1": "<strong>Aktualna wersja:</strong> DJ V-SCRATCH LIVE v1.0.0 (Wydanie oficjalne)",
         "modal.update_p2": "<strong>Gwarancja dożywotnia:</strong> Wszystkie mniejsze aktualizacje i łatki stabilności w ramach cyklu v1.x są bezpłatne. Bez opłat abonamentowych.",
         "modal.update_p3": "Wkrótce pojawią się nowe mapowania MIDI, dodatkowe skórki i separacja ścieżek stem.",
-        "core.tag": "FLAGOWIEC VIR2OSESOUND",
-        "hero.badge2": "DŹWIĘK 3D",
-        "hero.badge3": "BEZ SUBSKRYPCJI",
-        "hero.btnTrial": "14 Dni Wersja Próbna",
-        "hero.btnBuy": "Kup Licencję Dożywotnią",
-        "hero.scrollHint": "ODKRYJ STUDIO",
         "core.tag": "FLAGOWIEC VIR2OSESOUND",
         "core.title": "Serce Współczesnego <span>Turntablizmu</span>",
         "core.lead": "Zaprojektowane od podstaw dla bezstratnego, wolnego od opóźnień scratchingu winylowego, precyzyjnego miksowania i występów na żywo.",
