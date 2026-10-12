@@ -323,6 +323,131 @@
       pointer-events: auto;
     }
 
+    /* Jump to Top Floating Button */
+    .jump-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(13, 13, 20, 0.85);
+      border: 1px solid rgba(190, 179, 118, 0.5);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 80;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-glow);
+      backdrop-filter: blur(10px);
+    }
+
+    .jump-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .jump-to-top:hover {
+      background: rgba(190, 179, 118, 0.2);
+      border-color: #beb376;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 25px rgba(190, 179, 118, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .jump-to-top svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold-light);
+    }
+
+    /* Info Modals (About, Help, Update) */
+    .info-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .info-modal-backdrop.open {
+      display: flex;
+    }
+
+    .info-modal-card {
+      background: rgba(12, 12, 18, 0.96);
+      border: 1px solid rgba(190, 179, 118, 0.45);
+      border-radius: 10px;
+      max-width: 580px;
+      width: 100%;
+      padding: 34px 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px var(--gold-glow);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: var(--gold-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      opacity: 1;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-title span {
+      color: var(--gold-light);
+    }
+
+    .modal-body {
+      color: #c4c6d2;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .modal-body p {
+      margin-bottom: 12px;
+    }
+
+    .modal-body ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    .modal-body li {
+      margin-bottom: 6px;
+    }
+
     /* =========================================================================
        HERO CALL TO ACTION (FILIGRAN, GOLD-EDEL)
        ========================================================================= */
@@ -698,32 +823,67 @@
       font-weight: 500;
     }
 
-    /* Footer - Crisp, High-Contrast & Solid (kein Verwischen) */
+    /* Footer - Elegant, Subtle & Subdued (wie bei V-Channel Studio Pro Signature) */
     footer {
       position: relative;
       z-index: 10;
-      border-top: 1px solid rgba(190, 179, 118, 0.45);
-      padding: 55px 40px;
-      background: #020204; /* Solid, crisp background */
+      border-top: 1px solid rgba(157, 146, 87, 0.2);
+      padding: 42px 24px;
+      background: #020204;
       text-align: center;
-      color: #b8bac7; /* High contrast sharp text */
-      font-size: 0.88rem;
-      letter-spacing: 1.2px;
-      box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.85);
+      color: #90929e;
+      font-size: 0.82rem;
+      letter-spacing: 0.8px;
+      line-height: 1.8;
     }
 
-    footer .brand {
+    footer .footer-primary {
+      color: #b5b7c4;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    footer .footer-primary strong {
       color: var(--gold-light);
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      margin-bottom: 14px;
-      font-size: 1.05rem;
-      text-shadow: 0 0 15px var(--gold-glow);
+      font-weight: 700;
+      letter-spacing: 1.2px;
     }
 
-    footer p {
-      color: #9ea0b0;
-      margin: 4px 0;
+    footer .footer-address {
+      color: #727480;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    footer .footer-links {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+    }
+
+    footer .footer-links a {
+      color: #8c8e9b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    footer .footer-links .sep {
+      color: rgba(157, 146, 87, 0.4);
+    }
+
+    footer .footer-sub {
+      margin-top: 12px;
+      font-size: 0.74rem;
+      color: #636570;
+      letter-spacing: 1.2px;
     }
 
     /* =========================================================================
@@ -987,6 +1147,9 @@
         <li><a href="#karaoke" data-i18n="nav.video">V-VIDEO</a></li>
         <li><a href="#tools" data-i18n="nav.tools">TOOLS</a></li>
         <li><a href="#specs" data-i18n="nav.specs">SPECS</a></li>
+        <li><a href="#about" class="modal-trigger" data-modal="aboutModal" data-i18n="nav.about">ABOUT</a></li>
+        <li><a href="#help" class="modal-trigger" data-modal="helpModal" data-i18n="nav.help">HELP</a></li>
+        <li><a href="#update" class="modal-trigger" data-modal="updateModal" data-i18n="nav.update">UPDATE</a></li>
       </ul>
 
       <!-- Flag Language Switcher -->
@@ -1019,6 +1182,9 @@
         <li><a href="#karaoke" data-i18n="nav.video" class="drawer-link">V-VIDEO</a></li>
         <li><a href="#tools" data-i18n="nav.tools" class="drawer-link">TOOLS</a></li>
         <li><a href="#specs" data-i18n="nav.specs" class="drawer-link">SPECS</a></li>
+        <li><a href="#about" class="drawer-link modal-trigger" data-modal="aboutModal" data-i18n="nav.about">ABOUT</a></li>
+        <li><a href="#help" class="drawer-link modal-trigger" data-modal="helpModal" data-i18n="nav.help">HELP</a></li>
+        <li><a href="#update" class="drawer-link modal-trigger" data-modal="updateModal" data-i18n="nav.update">UPDATE</a></li>
       </ul>
       <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px;">
         <a href="#trial" class="btn btn-trial drawer-link" data-i18n="hero.btnTrial" style="width: 100%;">14-Day Free Trial</a>
@@ -1257,13 +1423,69 @@
     </div>
   </section>
 
+  <!-- Floating Jump to Top Arrow Button -->
+  <button class="jump-to-top" id="jumpToTopBtn" aria-label="Jump to Top" title="Jump to top">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
+
+  <!-- Modals for ABOUT, HELP, UPDATE -->
+  <div class="info-modal-backdrop" id="aboutModal">
+    <div class="info-modal-card">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title"><span>vir2oseSOUND</span> • <span data-i18n="modal.about_title">About the Creator</span></h3>
+      <div class="modal-body">
+        <p data-i18n="modal.about_p1"><strong>DJ V-SCRATCH LIVE</strong> is master-crafted by <strong>Waldemar Krucinski</strong> (vir2ose), certified Audio Engineer (HOFA) with over 26 years of studio expertise and passionate devotion to turntablism culture.</p>
+        <p data-i18n="modal.about_p2">Engineered with high-precision C++20 and JUCE DSP architectures, vir2oseSOUND stands for zero compromise, tactile vinyl physics, and forward-looking 3D spatial acoustics.</p>
+        <p data-i18n="modal.about_p3">📍 <em>Lippertweg 3 • 30419 Hannover, Germany</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-modal-backdrop" id="helpModal">
+    <div class="info-modal-card">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title"><span>DJ V-SCRATCH LIVE</span> • <span data-i18n="modal.help_title">Help & Support</span></h3>
+      <div class="modal-body">
+        <p data-i18n="modal.help_p1">Need guidance getting started with your decks, mapping your MIDI hardware, or setting up ASIO drivers?</p>
+        <ul>
+          <li data-i18n="modal.help_l1"><strong>Quickstart Guide:</strong> Plug in your audio interface, select ASIO in Settings, and drop audio onto Deck A or B.</li>
+          <li data-i18n="modal.help_l2"><strong>Tablet Mode:</strong> Tap "TABLET TOUCH" in the lower right corner for enlarged touch targets and frameless full-screen.</li>
+          <li data-i18n="modal.help_l3"><strong>Direct Support:</strong> Contact our engineering lab at <a href="mailto:studio@waldemar-krucinski.com" style="color: var(--gold-light);">studio@waldemar-krucinski.com</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-modal-backdrop" id="updateModal">
+    <div class="info-modal-card">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title"><span>Studio Vault</span> • <span data-i18n="modal.update_title">Release Channel & Updates</span></h3>
+      <div class="modal-body">
+        <p data-i18n="modal.update_p1"><strong>Current Version:</strong> DJ V-SCRATCH LIVE v1.0.0 (Production Release)</p>
+        <p data-i18n="modal.update_p2"><strong>Perpetual Lifetime Guarantee:</strong> All minor updates and stability patches within the v1.x cycle are included for free. Zero recurring subscription fees.</p>
+        <p data-i18n="modal.update_p3">Check back frequently for upcoming MIDI presets, skin enhancements, and stem-separation updates.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- =========================================================================
-       FOOTER
+       FOOTER (SUBTLE, V-CHANNEL STUDIO PRO STYLE)
        ========================================================================= -->
   <footer>
-    <div class="brand">vir2oseSOUND • DJ V-SCRATCH LIVE</div>
-    <p data-i18n="footer.rights">© 2026 Waldemar Krucinski (vir2ose). All Rights Reserved.</p>
-    <p style="margin-top: 8px; color: #5a5c66;" data-i18n="footer.sub">turntablism.waldemar-krucinski.com • Professional Studio Solutions</p>
+    <p class="footer-primary">&copy; 2026 <strong>vir2oseSOUND</strong> • Waldemar Krucinski (Dipl. Audio Engineer HOFA)</p>
+    <p class="footer-address">Lippertweg 3 • 30419 Hannover, Germany</p>
+
+    <div class="footer-links">
+      <a href="https://waldemar-krucinski.com/impressum" target="_blank" data-i18n="footer.imprint">Imprint / Legal Notice</a>
+      <span class="sep">•</span>
+      <a href="https://waldemar-krucinski.com/datenschutz" target="_blank" data-i18n="footer.privacy">Privacy Policy</a>
+      <span class="sep">•</span>
+      <a href="https://waldemar-krucinski.com/agb" target="_blank" data-i18n="footer.terms">Terms & Conditions</a>
+      <span class="sep">•</span>
+      <a href="https://waldemar-krucinski.com/refund" target="_blank" data-i18n="footer.refund">Refund Policy</a>
+    </div>
+
+    <p class="footer-sub" data-i18n="footer.sub">KVR Audio Developer Hub Verified • Buy it once, own it forever.</p>
   </footer>
 
   <!-- =========================================================================
@@ -1277,12 +1499,28 @@
         "nav.video": "V-VIDEO",
         "nav.tools": "TOOLS",
         "nav.specs": "SPECS",
+        "nav.about": "ABOUT",
+        "nav.help": "HELP",
+        "nav.update": "UPDATE",
         "hero.badge1": "STANDALONE CONSOLE",
         "hero.badge2": "3D IMMERSIVE",
         "hero.badge3": "NO SUBSCRIPTION",
         "hero.btnTrial": "14-Day Free Trial",
         "hero.btnBuy": "Get Lifetime License",
         "hero.scrollHint": "EXPLORE STUDIO",
+        "modal.about_title": "About the Creator",
+        "modal.about_p1": "<strong>DJ V-SCRATCH LIVE</strong> is master-crafted by <strong>Waldemar Krucinski</strong> (vir2ose), certified Audio Engineer (HOFA) with over 26 years of studio expertise and passionate devotion to turntablism culture.",
+        "modal.about_p2": "Engineered with high-precision C++20 and JUCE DSP architectures, vir2oseSOUND stands for zero compromise, tactile vinyl physics, and forward-looking 3D spatial acoustics.",
+        "modal.about_p3": "📍 <em>Lippertweg 3 • 30419 Hannover, Germany</em>",
+        "modal.help_title": "Help & Support",
+        "modal.help_p1": "Need guidance getting started with your decks, mapping your MIDI hardware, or setting up ASIO drivers?",
+        "modal.help_l1": "<strong>Quickstart Guide:</strong> Plug in your audio interface, select ASIO in Settings, and drop audio onto Deck A or B.",
+        "modal.help_l2": "<strong>Tablet Mode:</strong> Tap \"TABLET TOUCH\" in the lower right corner for enlarged touch targets and frameless full-screen.",
+        "modal.help_l3": "<strong>Direct Support:</strong> Contact our engineering lab at <a href=\"mailto:studio@waldemar-krucinski.com\" style=\"color: var(--gold-light);\">studio@waldemar-krucinski.com</a>.",
+        "modal.update_title": "Release Channel & Updates",
+        "modal.update_p1": "<strong>Current Version:</strong> DJ V-SCRATCH LIVE v1.0.0 (Production Release)",
+        "modal.update_p2": "<strong>Perpetual Lifetime Guarantee:</strong> All minor updates and stability patches within the v1.x cycle are included for free. Zero recurring subscription fees.",
+        "modal.update_p3": "Check back frequently for upcoming MIDI presets, skin enhancements, and stem-separation updates.",
         "core.tag": "VIR2OSESOUND FLAGSHIP",
         "core.title": "The Heart of Modern <span>Turntablism</span>",
         "core.lead": "Engineered from the ground up for zero-latency vinyl scratching, precision beat-matching, and tactile live performance.",
@@ -1345,8 +1583,11 @@
         "specs.s5_val": "Windows 10 / 11 (64-Bit), Tablet Touch Optimized",
         "specs.s6_label": "Licensing Model",
         "specs.s6_val": "Perpetual Lifetime License • Zero Subscriptions",
-        "footer.rights": "© 2026 Waldemar Krucinski (vir2ose). All Rights Reserved.",
-        "footer.sub": "turntablism.waldemar-krucinski.com • Professional Studio Solutions"
+        "footer.imprint": "Imprint / Legal Notice",
+        "footer.privacy": "Privacy Policy",
+        "footer.terms": "Terms & Conditions",
+        "footer.refund": "Refund Policy",
+        "footer.sub": "KVR Audio Developer Hub Verified • Buy it once, own it forever."
       },
       de: {
         "nav.features": "FUNKTIONEN",
@@ -1354,12 +1595,28 @@
         "nav.video": "V-VIDEO",
         "nav.tools": "WERKZEUGE",
         "nav.specs": "SPEZIFIKATIONEN",
+        "nav.about": "ÜBER UNS",
+        "nav.help": "HILFE",
+        "nav.update": "UPDATES",
         "hero.badge1": "STANDALONE KONSOLE",
         "hero.badge2": "3D IMMERSIV",
         "hero.badge3": "KEIN ABONNEMENT",
         "hero.btnTrial": "14-Tage Testversion",
         "hero.btnBuy": "Lebenslange Lizenz Kaufen",
         "hero.scrollHint": "STUDIO ENTDECKEN",
+        "modal.about_title": "Über den Entwickler",
+        "modal.about_p1": "<strong>DJ V-SCRATCH LIVE</strong> wurde mit Leidenschaft von <strong>Waldemar Krucinski</strong> (vir2ose) entwickelt – diplomierter Toningenieur (HOFA) mit über 26 Jahren Studioerfahrung und tiefster Verbundenheit zur Turntablism-Kultur.",
+        "modal.about_p2": "Basiert auf nativer C++20- und JUCE-DSP-Architektur: Keine Kompromisse, taktile Vinyl-Physik und zukunftsweisende 3D-Binaural-Akustik.",
+        "modal.about_p3": "📍 <em>Lippertweg 3 • 30419 Hannover, Deutschland</em>",
+        "modal.help_title": "Hilfe & Support",
+        "modal.help_p1": "Benötigst du Unterstützung bei der Einrichtung deiner Decks, beim MIDI-Mapping oder beim ASIO-Audiotreiber?",
+        "modal.help_l1": "<strong>Schnellstart:</strong> Audio-Interface anschließen, in den Einstellungen ASIO wählen und Tracks auf Deck A oder B laden.",
+        "modal.help_l2": "<strong>Tablet-Modus:</strong> Klicke unten rechts auf \"TABLET TOUCH\" für vergrößerte Touch-Flächen und rahmenlosen Vollbildmodus.",
+        "modal.help_l3": "<strong>Direkter Support:</strong> Kontaktiere unser Studio direkt unter <a href=\"mailto:studio@waldemar-krucinski.com\" style=\"color: var(--gold-light);\">studio@waldemar-krucinski.com</a>.",
+        "modal.update_title": "Release-Kanal & Updates",
+        "modal.update_p1": "<strong>Aktuelle Version:</strong> DJ V-SCRATCH LIVE v1.0.0 (Offizielles Release)",
+        "modal.update_p2": "<strong>Lebenslange Garantie:</strong> Alle kleineren Updates und Stabilitätspatches der Version 1.x sind dauerhaft kostenlos enthalten. Keine Abo-Gebühren.",
+        "modal.update_p3": "Freue dich auf kommende MIDI-Mappings, Skin-Erweiterungen und Stem-Separation.",
         "core.tag": "VIR2OSESOUND FLAGGSCHIFF",
         "core.title": "Das Herzstück des modernen <span>Turntablism</span>",
         "core.lead": "Von Grund auf entwickelt für latenzfreies Vinyl-Scratching, präzises Beat-Matching und haptische Live-Performances.",
@@ -1422,8 +1679,11 @@
         "specs.s5_val": "Windows 10 / 11 (64-Bit), Tablet-Touch-optimiert",
         "specs.s6_label": "Lizenzmodell",
         "specs.s6_val": "Lebenslange Einzellizenz • Keine Abos",
-        "footer.rights": "© 2026 Waldemar Krucinski (vir2ose). Alle Rechte vorbehalten.",
-        "footer.sub": "turntablism.waldemar-krucinski.com • Professionelle Studio-Lösungen"
+        "footer.imprint": "Impressum",
+        "footer.privacy": "Datenschutz",
+        "footer.terms": "AGB",
+        "footer.refund": "Widerrufsbelehrung",
+        "footer.sub": "KVR Audio Developer Hub Verifiziert • Einmal kaufen, für immer besitzen."
       },
       pl: {
         "nav.features": "FUNKCJE",
@@ -1431,7 +1691,29 @@
         "nav.video": "V-VIDEO",
         "nav.tools": "NARZĘDZIA",
         "nav.specs": "SPECYFIKACJA",
+        "nav.about": "O NAS",
+        "nav.help": "POMOC",
+        "nav.update": "AKTUALIZACJE",
         "hero.badge1": "KONSOLA STANDALONE",
+        "hero.badge2": "DŹWIĘK 3D",
+        "hero.badge3": "BEZ SUBSKRYPCJI",
+        "hero.btnTrial": "14 Dni Wersja Próbna",
+        "hero.btnBuy": "Kup Licencję Dożywotnią",
+        "hero.scrollHint": "ODKRYJ STUDIO",
+        "modal.about_title": "O Twórcy",
+        "modal.about_p1": "<strong>DJ V-SCRATCH LIVE</strong> został mistrzowsko stworzony przez <strong>Waldemara Krucińskiego</strong> (vir2ose), dyplomowanego inżyniera dźwięku (HOFA) z ponad 26-letnim doświadczeniem studyjnym i pasją do turntablizmu.",
+        "modal.about_p2": "Zbudowany na natywnej architekturze C++20 i JUCE DSP: bez kompromisów, z fizyką winylu i trójwymiarowym dźwiękiem binauralnym.",
+        "modal.about_p3": "📍 <em>Lippertweg 3 • 30419 Hanower, Niemcy</em>",
+        "modal.help_title": "Pomoc i Wsparcie",
+        "modal.help_p1": "Potrzebujesz wskazówek dotyczących konfiguracji decków, mapowania kontrolera MIDI lub sterowników ASIO?",
+        "modal.help_l1": "<strong>Szybki start:</strong> Podłącz interfejs audio, wybierz ASIO w ustawieniach i załaduj utwór na Deck A lub B.",
+        "modal.help_l2": "<strong>Tryb tabletu:</strong> Dotknij \"TABLET TOUCH\" w prawym dolnym rogu, aby uzyskać powiększone kontrolki i tryb pełnoekranowy.",
+        "modal.help_l3": "<strong>Wsparcie techniczne:</strong> Skontaktuj się bezpośrednio z naszym laboratorium: <a href=\"mailto:studio@waldemar-krucinski.com\" style=\"color: var(--gold-light);\">studio@waldemar-krucinski.com</a>.",
+        "modal.update_title": "Kanał Wydań i Aktualizacje",
+        "modal.update_p1": "<strong>Aktualna wersja:</strong> DJ V-SCRATCH LIVE v1.0.0 (Wydanie oficjalne)",
+        "modal.update_p2": "<strong>Gwarancja dożywotnia:</strong> Wszystkie mniejsze aktualizacje i łatki stabilności w ramach cyklu v1.x są bezpłatne. Bez opłat abonamentowych.",
+        "modal.update_p3": "Wkrótce pojawią się nowe mapowania MIDI, dodatkowe skórki i separacja ścieżek stem.",
+        "core.tag": "FLAGOWIEC VIR2OSESOUND",
         "hero.badge2": "DŹWIĘK 3D",
         "hero.badge3": "BEZ SUBSKRYPCJI",
         "hero.btnTrial": "14 Dni Wersja Próbna",
@@ -1498,9 +1780,11 @@
         "specs.s5_label": "Systemy Operacyjne",
         "specs.s5_val": "Windows 10 / 11 (64-Bit), zoptymalizowany pod dotyk tabletu",
         "specs.s6_label": "Model Licencji",
-        "specs.s6_val": "Dożywotnia licencja jednorazowa • Bez abonamentu",
-        "footer.rights": "© 2026 Waldemar Kruciński (vir2ose). Wszelkie prawa zastrzeżone.",
-        "footer.sub": "turntablism.waldemar-krucinski.com • Profesjonalne Rozwiązania Studyjne"
+        "footer.imprint": "Nota prawna / Impressum",
+        "footer.privacy": "Polityka prywatności",
+        "footer.terms": "Regulamin i warunki",
+        "footer.refund": "Polityka zwrotów",
+        "footer.sub": "KVR Audio Developer Hub Zweryfikowano • Kup raz, posiadaj na zawsze."
       }
     };
 
@@ -1654,6 +1938,58 @@
 
     drawerLinks.forEach(link => {
       link.addEventListener('click', () => toggleMobileDrawer(false));
+    });
+
+    /* =========================================================================
+       JUMP TO TOP BUTTON INTERACTION
+       ========================================================================= */
+    const jumpToTopBtn = document.getElementById('jumpToTopBtn');
+    if (jumpToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          jumpToTopBtn.classList.add('visible');
+        } else {
+          jumpToTopBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      jumpToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    /* =========================================================================
+       INFO MODALS (ABOUT, HELP, UPDATE) INTERACTION
+       ========================================================================= */
+    document.querySelectorAll('.modal-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalId = trigger.getAttribute('data-modal');
+        const targetModal = document.getElementById(modalId);
+        if (targetModal) {
+          targetModal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    document.querySelectorAll('.info-modal-backdrop').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('modal-close-btn')) {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    document.querySelectorAll('.modal-close-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modal = btn.closest('.info-modal-backdrop');
+        if (modal) {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
     });
   </script>
 </body>
