@@ -505,19 +505,22 @@
     }
 
     .btn-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: clamp(660px, 40.5vw, 790px);
+      margin: 0 auto;
+      box-sizing: border-box;
     }
 
     /* Filigrane Buttons */
     .btn {
-      padding: 12px 24px;
-      font-size: 0.82rem;
+      width: 100%;
+      padding: 12px 6px;
+      font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       text-decoration: none;
       border-radius: 4px;
@@ -526,11 +529,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       position: relative;
       overflow: hidden;
       font-family: inherit;
       border: none;
+      white-space: nowrap;
+      box-sizing: border-box;
     }
 
     /* Testversion: Subtil, transparent mit Cyan Accent */
@@ -550,51 +555,39 @@
     }
 
     /* Standard Edition (79,99 €): Brushed Titanium / Silver (#7d7c78) */
-    .btn-buy-standard {
-      background: linear-gradient(135deg, #9b9a95 0%, #7d7c78 50%, #605f5b 100%);
-      color: #0e0e0c;
-      border: 1px solid rgba(195, 194, 188, 0.85);
-      box-shadow: 0 0 20px rgba(125, 124, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+    .btn-buy-standard,
+    .btn-standard {
+      background: linear-gradient(135deg, #9b9a95 0%, #7d7c78 50%, #605f5b 100%) !important;
+      color: #0e0e0c !important;
+      border: 1px solid rgba(195, 194, 188, 0.85) !important;
+      box-shadow: 0 0 20px rgba(125, 124, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.35) !important;
       font-weight: 800;
     }
 
-    .btn-buy-standard:hover {
-      background: linear-gradient(135deg, #b5b4af 0%, #92918c 50%, #7d7c78 100%);
-      box-shadow: 0 0 32px rgba(195, 194, 188, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    .btn-buy-standard:hover,
+    .btn-standard:hover {
+      background: linear-gradient(135deg, #b5b4af 0%, #92918c 50%, #7d7c78 100%) !important;
+      box-shadow: 0 0 32px rgba(195, 194, 188, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
       transform: translateY(-2px);
-      color: #000000;
+      color: #000000 !important;
     }
 
     /* Ultimate Suite (129,99 €): Edles vir2ose Studio Gold */
-    .btn-buy-ultimate {
-      background: linear-gradient(135deg, #b5a867 0%, #9d9257 50%, #7d7340 100%);
-      color: #0d0c07;
-      border: 1px solid rgba(220, 209, 142, 0.85);
-      box-shadow: 0 0 25px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    .btn-buy-ultimate,
+    .btn-ultimate {
+      background: linear-gradient(135deg, #b5a867 0%, #9d9257 50%, #7d7340 100%) !important;
+      color: #0d0c07 !important;
+      border: 1px solid rgba(220, 209, 142, 0.9) !important;
+      box-shadow: 0 0 25px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
       font-weight: 800;
     }
 
-    .btn-buy-ultimate:hover {
-      background: linear-gradient(135deg, #c7bb74 0%, #beb376 50%, #9d9257 100%);
-      box-shadow: 0 0 35px rgba(190, 179, 118, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    .btn-buy-ultimate:hover,
+    .btn-ultimate:hover {
+      background: linear-gradient(135deg, #c7bb74 0%, #beb376 50%, #9d9257 100%) !important;
+      box-shadow: 0 0 35px rgba(190, 179, 118, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
       transform: translateY(-2px);
-      color: #000000;
-    }
-
-    /* Standard Button Fallback */
-    .btn-buy {
-      background: linear-gradient(135deg, #9b9a95 0%, #7d7c78 50%, #605f5b 100%);
-      color: #0e0e0c;
-      border: 1px solid rgba(195, 194, 188, 0.85);
-      box-shadow: 0 0 20px rgba(125, 124, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.65);
-      font-weight: 800;
-    }
-
-    .btn-buy:hover {
-      background: linear-gradient(135deg, #b5b4af 0%, #92918c 50%, #7d7c78 100%);
-      box-shadow: 0 0 32px rgba(195, 194, 188, 0.6);
-      transform: translateY(-2px);
-      color: #000000;
+      color: #000000 !important;
     }
 
     .edition-compare-link {
@@ -1375,10 +1368,10 @@
       </ul>
       <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
         <a href="#trial" class="btn btn-trial drawer-link" data-i18n="hero.btnTrial" style="width: 100%;">14-Day Free Trial</a>
-        <button type="button" class="btn btn-buy btn-buy-standard" onclick="buyScratchEdition(PADDLE_PRICES.standard)" style="width: 100%;">
+        <button type="button" class="btn btn-buy-standard" onclick="buyScratchEdition(PADDLE_PRICES.standard)" style="width: 100%;">
           <span data-i18n="hero.btnStandard">Standard Edition (79,99 €)</span>
         </button>
-        <button type="button" class="btn btn-buy btn-buy-ultimate" onclick="buyScratchEdition(PADDLE_PRICES.ultimate)" style="width: 100%;">
+        <button type="button" class="btn btn-buy-ultimate" onclick="buyScratchEdition(PADDLE_PRICES.ultimate)" style="width: 100%;">
           <span data-i18n="hero.btnUltimate">Ultimate Suite (129,99 €)</span>
         </button>
         <a href="#editions" class="drawer-link modal-trigger" data-modal="editionModal" data-i18n="hero.compareEditions" style="text-align: center; font-size: 0.74rem; color: var(--gold-light); text-decoration: underline; margin-top: 4px;">⇄ Compare Editions &amp; Features</a>
@@ -1393,10 +1386,10 @@
       </div>
       <div class="btn-group">
         <a href="#trial" class="btn btn-trial" data-i18n="hero.btnTrial">14-Day Free Trial</a>
-        <button type="button" class="btn btn-buy btn-buy-standard" onclick="buyScratchEdition(PADDLE_PRICES.standard)">
+        <button type="button" class="btn btn-buy-standard" onclick="buyScratchEdition(PADDLE_PRICES.standard)">
           <span data-i18n="hero.btnStandard">Standard Edition (79,99 €)</span>
         </button>
-        <button type="button" class="btn btn-buy btn-buy-ultimate" onclick="buyScratchEdition(PADDLE_PRICES.ultimate)">
+        <button type="button" class="btn btn-buy-ultimate" onclick="buyScratchEdition(PADDLE_PRICES.ultimate)">
           <span data-i18n="hero.btnUltimate">Ultimate Suite (129,99 €)</span>
         </button>
       </div>
