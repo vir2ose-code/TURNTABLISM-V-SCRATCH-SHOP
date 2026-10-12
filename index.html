@@ -1,24 +1,61 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DJ V-SCRATCH LIVE | vir2oseSOUND</title>
+  <meta name="description" content="Next-Gen Turntablism & DJ Virtual Studio. Dual High-Precision Decks, V-Chopper, V-Sphere 3D Immersive Audio, V-Video Karaoke & Low Latency DSP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-deep: #030305;
+      --bg-card: rgba(13, 13, 20, 0.72);
+      --bg-card-hover: rgba(18, 18, 28, 0.88);
+      --gold-primary: #9d9257;
+      --gold-light: #beb376;
+      --gold-glow: rgba(157, 146, 87, 0.35);
+      --cyan-accent: #00d2ff;
+      --cyan-glow: rgba(0, 210, 255, 0.3);
+      --text-main: #f0f0f5;
+      --text-muted: #8e909a;
+      --border-subtle: rgba(157, 146, 87, 0.22);
+      --border-bright: rgba(190, 179, 118, 0.55);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      background-color: #030305;
-      color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      overflow-x: hidden;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Hero Section */
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Ambient Glow Background behind sections */
+    .ambient-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(157, 146, 87, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
+    }
+
+    /* =========================================================================
+       HERO SECTION
+       ========================================================================= */
     .hero-section {
       position: relative;
       width: 100%;
@@ -29,155 +66,1100 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 30px 40px 60px 40px;
+      padding: 24px 40px 50px 40px;
+      z-index: 1;
     }
 
-    /* Subtile Vignette für nahtlosen Übergang nach unten */
     .hero-section::after {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 150px;
-      background: linear-gradient(to bottom, transparent, #030305);
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--bg-deep));
       pointer-events: none;
     }
 
-    /* Header Nav */
+    /* =========================================================================
+       NAVBAR & LANGUAGE SWITCHER
+       ========================================================================= */
     .navbar {
       width: 100%;
-      max-width: 1600px;
+      max-width: 1680px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      z-index: 10;
+      gap: 36px;
+      z-index: 20;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      gap: 32px;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
       color: #b5b5b5;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
-      transition: color 0.2s ease;
+      letter-spacing: 1.8px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--gold-light);
+      transition: width 0.25s ease;
     }
 
     .nav-links a:hover {
-      color: #00d2ff;
+      color: var(--gold-light);
     }
 
-    /* Call to Action Container */
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(10, 10, 16, 0.65);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(157, 146, 87, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 3px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      opacity: 0.55;
+    }
+
+    .lang-btn:hover {
+      opacity: 0.9;
+      transform: scale(1.08);
+    }
+
+    .lang-btn.active {
+      opacity: 1;
+      box-shadow: 0 0 10px var(--gold-glow);
+      border: 1px solid var(--gold-light);
+    }
+
+    .lang-btn img {
+      width: 22px;
+      height: 14px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* =========================================================================
+       HERO CALL TO ACTION (FILIGRAN, GOLD-EDEL)
+       ========================================================================= */
     .cta-wrapper {
       position: relative;
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
       margin-top: auto;
+      text-align: center;
     }
 
     .badge-bar {
       display: flex;
-      gap: 25px;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: #8e909a;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.76rem;
+      letter-spacing: 2.2px;
+      color: var(--text-muted);
       text-transform: uppercase;
       font-weight: 600;
     }
 
-    .badge-bar span {
-      color: #00d2ff;
+    .badge-bar .diamond {
+      color: var(--gold-primary);
+      font-size: 0.65rem;
+      text-shadow: 0 0 8px var(--gold-glow);
     }
 
     .btn-group {
       display: flex;
-      gap: 20px;
+      gap: 24px;
     }
 
+    /* Filigrane Buttons */
     .btn {
-      padding: 16px 36px;
-      font-size: 0.95rem;
+      padding: 12px 28px;
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       text-decoration: none;
-      border-radius: 4px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 3px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
     }
 
+    /* Testversion: Subtil, transparent mit Cyan Accent */
     .btn-trial {
-      background: #00d2ff;
-      color: #050507;
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
-    }
-
-    .btn-buy {
-      background: linear-gradient(135deg, #d4af37 0%, #aa8010 100%);
+      background: rgba(0, 210, 255, 0.08);
       color: #ffffff;
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
+      border: 1px solid rgba(0, 210, 255, 0.65);
+      box-shadow: 0 0 18px rgba(0, 210, 255, 0.18), inset 0 0 12px rgba(0, 210, 255, 0.08);
     }
 
     .btn-trial:hover {
-      box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
+      background: rgba(0, 210, 255, 0.22);
+      border-color: #00d2ff;
+      color: #ffffff;
+      box-shadow: 0 0 28px rgba(0, 210, 255, 0.45), inset 0 0 16px rgba(0, 210, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    /* Lifetime License: Edles Gold #9d9257 */
+    .btn-buy {
+      background: linear-gradient(135deg, #b5a867 0%, #9d9257 50%, #7d7340 100%);
+      color: #0d0c07;
+      border: 1px solid rgba(220, 209, 142, 0.85);
+      box-shadow: 0 0 22px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      font-weight: 800;
     }
 
     .btn-buy:hover {
-      box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+      background: linear-gradient(135deg, #c7bb74 0%, #beb376 50%, #9d9257 100%);
+      box-shadow: 0 0 35px rgba(190, 179, 118, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      color: #000000;
+    }
+
+    /* Scroll Indicator Arrow */
+    .scroll-hint {
+      margin-top: 15px;
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.65;
+      animation: floatSlow 2.5s ease-in-out infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .scroll-hint svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--gold-light);
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(6px); opacity: 0.9; }
+    }
+
+    /* =========================================================================
+       SECTION CONTAINERS & TYPOGRAPHY
+       ========================================================================= */
+    .section-wrap {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 110px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+      border-bottom: 1px solid var(--gold-primary);
+      padding-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-lead {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 780px;
+      margin-bottom: 55px;
+      font-weight: 400;
+    }
+
+    /* Split Grid for Modules */
+    .module-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 100px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+      transition: all 0.35s ease;
+    }
+
+    .module-card:hover {
+      border-color: var(--border-bright);
+      background: var(--bg-card-hover);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(157, 146, 87, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .module-card.reversed {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .module-card.reversed .module-preview {
+      order: 2;
+    }
+
+    .module-card.reversed .module-info {
+      order: 1;
+    }
+
+    .module-preview {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .module-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .module-card:hover .module-preview img {
+      transform: scale(1.02);
+    }
+
+    .module-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .module-badge {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 3px;
+      background: rgba(157, 146, 87, 0.15);
+      color: var(--gold-light);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .module-info h3 {
+      font-size: 1.7rem;
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .module-info p {
+      color: #a2a4b0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .feature-list li {
+      font-size: 0.86rem;
+      color: #c4c6d2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: '◆';
+      color: var(--gold-primary);
+      font-size: 0.65rem;
+    }
+
+    /* Grid for smaller feature showcase (Wave, Playlist, Screens) */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .tool-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(14px);
+      transition: all 0.3s ease;
+    }
+
+    .tool-box:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(157, 146, 87, 0.12);
+    }
+
+    .tool-img {
+      width: 100%;
+      height: 240px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tool-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .tool-box:hover .tool-img img {
+      transform: scale(1.04);
+    }
+
+    .tool-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .tool-body h4 {
+      font-size: 1.15rem;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .tool-body p {
+      color: #9da0ae;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* Specs & System Requirements */
+    .specs-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      backdrop-filter: blur(16px);
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-left: 16px;
+      border-left: 2px solid var(--gold-primary);
+    }
+
+    .spec-label {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .spec-value {
+      font-size: 0.95rem;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(157, 146, 87, 0.2);
+      padding: 50px 40px;
+      background: #020204;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+    }
+
+    footer .brand {
+      color: var(--gold-light);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* =========================================================================
+       RESPONSIVE DESIGN
+       ========================================================================= */
+    @media (max-width: 1024px) {
+      .module-card, .module-card.reversed {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .module-card.reversed .module-preview {
+        order: 1;
+      }
+      .module-card.reversed .module-info {
+        order: 2;
+      }
     }
 
     @media (max-width: 768px) {
       .navbar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
         justify-content: center;
       }
       .btn-group {
         flex-direction: column;
         width: 100%;
-      }
-      .btn {
-        text-align: center;
+        max-width: 320px;
       }
       .badge-bar {
         display: none;
+      }
+      .section-wrap {
+        padding: 70px 20px;
+      }
+      .section-title {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Ambient Background Spotlights -->
+  <div class="ambient-glow" style="top: 15%; left: 5%;"></div>
+  <div class="ambient-glow" style="top: 55%; right: 5%;"></div>
+  <div class="ambient-glow" style="top: 85%; left: 10%;"></div>
+
+  <!-- =========================================================================
+       HERO HEADER
+       ========================================================================= -->
   <header class="hero-section">
     <nav class="navbar">
       <ul class="nav-links">
-        <li><a href="#features">FEATURES</a></li>
-        <li><a href="#spatial">3D SPATIAL</a></li>
-        <li><a href="#karaoke">V-VIDEO</a></li>
-        <li><a href="#specs">SPECS</a></li>
+        <li><a href="#features" data-i18n="nav.features">FEATURES</a></li>
+        <li><a href="#spatial" data-i18n="nav.spatial">3D SPATIAL</a></li>
+        <li><a href="#karaoke" data-i18n="nav.video">V-VIDEO</a></li>
+        <li><a href="#tools" data-i18n="nav.tools">TOOLS</a></li>
+        <li><a href="#specs" data-i18n="nav.specs">SPECS</a></li>
       </ul>
+
+      <!-- Flag Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="en" title="English" aria-label="English">
+          <img src="EN.png" alt="English">
+        </button>
+        <button class="lang-btn" data-lang="de" title="Deutsch" aria-label="Deutsch">
+          <img src="DE.png" alt="Deutsch">
+        </button>
+        <button class="lang-btn" data-lang="pl" title="Polski" aria-label="Polski">
+          <img src="PL.png" alt="Polski">
+        </button>
+      </div>
     </nav>
 
     <div class="cta-wrapper">
       <div class="badge-bar">
-        <span>◆</span> Standalone Console <span>◆</span> 3D Immersive <span>◆</span> No Subscription
+        <span class="diamond">◆</span> <span data-i18n="hero.badge1">STANDALONE CONSOLE</span>
+        <span class="diamond">◆</span> <span data-i18n="hero.badge2">3D IMMERSIVE</span>
+        <span class="diamond">◆</span> <span data-i18n="hero.badge3">NO SUBSCRIPTION</span>
       </div>
       <div class="btn-group">
-        <a href="#trial" class="btn btn-trial">14-Tage Testversion</a>
-        <a href="#buy" class="btn btn-buy">Get Lifetime License</a>
+        <a href="#trial" class="btn btn-trial" data-i18n="hero.btnTrial">14-Day Free Trial</a>
+        <a href="#buy" class="btn btn-buy" data-i18n="hero.btnBuy">Get Lifetime License</a>
       </div>
+      <a href="#features" class="scroll-hint">
+        <span data-i18n="hero.scrollHint">EXPLORE STUDIO</span>
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </a>
     </div>
   </header>
 
+  <!-- =========================================================================
+       FLAGSHIP WORKSTATION: DJ V-SCRATCH LIVE
+       ========================================================================= -->
+  <section id="features" class="section-wrap">
+    <span class="section-tag" data-i18n="core.tag">VIR2OSESOUND FLAGSHIP</span>
+    <h2 class="section-title" data-i18n="core.title">The Heart of Modern <span>Turntablism</span></h2>
+    <p class="section-lead" data-i18n="core.lead">
+      Engineered from the ground up for zero-latency vinyl scratching, precision beat-matching, and tactile live performance.
+    </p>
+
+    <!-- Main Module 1: DJ V-SCRATCH LIVE CONSOLE -->
+    <div class="module-card">
+      <div class="module-preview">
+        <img src="V-SCRATCH.png" alt="DJ V-SCRATCH LIVE Main Console" loading="lazy">
+      </div>
+      <div class="module-info">
+        <span class="module-badge" data-i18n="core.badge1">DUAL DECK ENGINE</span>
+        <h3 data-i18n="core.h3_scratch">DJ V-SCRATCH LIVE 1.0</h3>
+        <p data-i18n="core.desc_scratch">
+          Ultra-realistic vinyl emulation with interactive needle drops, multi-point cueing, real-time BPM detection, 3-band studio isolator EQ, and full tactile touch mode for Windows tablets.
+        </p>
+        <ul class="feature-list">
+          <li data-i18n="core.feat1">High-Resolution Physical Vinyl & Scratch Engine</li>
+          <li data-i18n="core.feat2">Performance Pads: Hot Cue, Loop, Roll, Slicer</li>
+          <li data-i18n="core.feat3">Dedicated Tablet Touch Mode with Scaled Hit-Boxes</li>
+          <li data-i18n="core.feat4">Asio & CoreAudio Ultra Low Latency Processing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Module 2: V-CHOPPER -->
+    <div class="module-card reversed">
+      <div class="module-preview">
+        <img src="V-CHOPPER.png" alt="V-CHOPPER Live Beat Slicer" loading="lazy">
+      </div>
+      <div class="module-info">
+        <span class="module-badge" data-i18n="chopper.badge">SAMPLE & SLICE</span>
+        <h3 data-i18n="chopper.title">V-CHOPPER Sample Engine</h3>
+        <p data-i18n="chopper.desc">
+          Slice, randomize, and re-trigger breaks and vocal drops on the fly. Real-time transient detection locks every chop tightly onto the master groove.
+        </p>
+        <ul class="feature-list">
+          <li data-i18n="chopper.feat1">Automatic Transient & Grid Beat Slicing</li>
+          <li data-i18n="chopper.feat2">Randomizer & Re-Arranger for Instant Remixing</li>
+          <li data-i18n="chopper.feat3">Zero-Glitch Waveform Scrubbing & Stereo Bed Routing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3D SPATIAL AUDIO ENGINE
+       ========================================================================= -->
+  <section id="spatial" class="section-wrap" style="padding-top: 20px;">
+    <span class="section-tag" data-i18n="spatial.tag">IMMERSIVE REVOLUTION</span>
+    <h2 class="section-title" data-i18n="spatial.title">V-SPHERE <span>3D Spatial Audio</span></h2>
+    <p class="section-lead" data-i18n="spatial.lead">
+      Move beyond ordinary stereo. Position decks, vocals, and effects freely across full 360-degree binaural 3D space with real-time HRTF acoustic simulation.
+    </p>
+
+    <div class="module-card">
+      <div class="module-preview">
+        <img src="V-SPH3RE.png" alt="V-SPHERE 3D Immersive Spatial Audio Engine" loading="lazy">
+      </div>
+      <div class="module-info">
+        <span class="module-badge" data-i18n="spatial.badge">360° ACOUSTICS</span>
+        <h3 data-i18n="spatial.h3">Binaural & Surround Master</h3>
+        <p data-i18n="spatial.desc">
+          Audiophile-grade immersive positioning for high-end club sound systems and standard studio headphones. Orbit tracks in real-time or lock sound stages around your audience.
+        </p>
+        <ul class="feature-list">
+          <li data-i18n="spatial.feat1">Full 360° Azimuth & Elevation Soundstage Navigation</li>
+          <li data-i18n="spatial.feat2">Psychoacoustic HRTF Filtering with Room Reflections</li>
+          <li data-i18n="spatial.feat3">Auto-Motion Orbital Trajectories & Gesture Control</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       V-VIDEO & LIVE STREAMING
+       ========================================================================= -->
+  <section id="karaoke" class="section-wrap" style="padding-top: 20px;">
+    <span class="section-tag" data-i18n="video.tag">VISUAL & PERFORMANCE</span>
+    <h2 class="section-title" data-i18n="video.title">V-VIDEO & <span>Live Stream Engine</span></h2>
+    <p class="section-lead" data-i18n="video.lead">
+      Sample-accurate synchronization between music, high-definition video feeds, synchronized CDG / LRC karaoke lyrics, and low-latency broadcasting.
+    </p>
+
+    <div class="module-card reversed">
+      <div class="module-preview">
+        <img src="V-STREAM LIVE.png" alt="V-STREAM LIVE & Video Engine" loading="lazy">
+      </div>
+      <div class="module-info">
+        <span class="module-badge" data-i18n="video.badge">A/V PTS TRACKING</span>
+        <h3 data-i18n="video.h3">Audio-Master Clock Synchronized</h3>
+        <p data-i18n="video.desc">
+          Zero drift: Video and scrolling lyrics are slaved directly to the DSP audio sample buffer. Pitch changes and scratching immediately warp visual streams in perfect synchrony.
+        </p>
+        <ul class="feature-list">
+          <li data-i18n="video.feat1">Hardware-Accelerated Video Decoding (MP4, MKV, AVI)</li>
+          <li data-i18n="video.feat2">Dual Video Screens for Master Output & DJ Booth Monitor</li>
+          <li data-i18n="video.feat3">Live CDG Karaoke Lyrics Engine with Pitch Tracking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       ADDITIONAL STUDIO SUITE TOOLS & SCREENS (SCROLL SHOWCASE)
+       ========================================================================= -->
+  <section id="tools" class="section-wrap" style="padding-top: 20px;">
+    <span class="section-tag" data-i18n="tools.tag">SUITE EXTENSIONS</span>
+    <h2 class="section-title" data-i18n="tools.title">Engineered for <span>Total Workflow</span></h2>
+    <p class="section-lead" data-i18n="tools.lead">
+      Every tool in the vir2oseSOUND suite is meticulously crafted for clarity, rapid muscle memory, and flawless performance on stage.
+    </p>
+
+    <div class="tools-grid">
+      <!-- Tool 1: Herzstück Center Console -->
+      <div class="tool-box">
+        <div class="tool-img">
+          <img src="Herzstueck.png" alt="Center Mixer Engine" loading="lazy">
+        </div>
+        <div class="tool-body">
+          <h4 data-i18n="tools.t1_title">Precision Center Mixer</h4>
+          <p data-i18n="tools.t1_desc">High-precision optical crossfader curves, dual LED VU meters, headphone pre-cue routing, and dedicated studio gain trims.</p>
+        </div>
+      </div>
+
+      <!-- Tool 2: Audio Wave Window -->
+      <div class="tool-box">
+        <div class="tool-img">
+          <img src="Audio_Wave-Window.png" alt="Audio Wave Window" loading="lazy">
+        </div>
+        <div class="tool-body">
+          <h4 data-i18n="tools.t2_title">Spectral Waveform Zoom</h4>
+          <p data-i18n="tools.t2_desc">Multi-color frequency-split audio waveforms showing bass kicks, snare transients, and vocal lines with sample-level zooming.</p>
+        </div>
+      </div>
+
+      <!-- Tool 3: Dynamic Playlist Management -->
+      <div class="tool-box">
+        <div class="tool-img">
+          <img src="PlayLists.png" alt="Dynamic Playlist Library" loading="lazy">
+        </div>
+        <div class="tool-body">
+          <h4 data-i18n="tools.t3_title">High-Speed Crate & Playlist Library</h4>
+          <p data-i18n="tools.t3_desc">Lightning-fast audio database search, smart folders, instant BPM sorting, key matching, and drag-and-drop deck loading.</p>
+        </div>
+      </div>
+
+      <!-- Tool 4: Dedicated Video Screen -->
+      <div class="tool-box">
+        <div class="tool-img">
+          <img src="Video_Screen.png" alt="Dedicated Video Screen Window" loading="lazy">
+        </div>
+        <div class="tool-body">
+          <h4 data-i18n="tools.t4_title">Dual-Monitor Video Window</h4>
+          <p data-i18n="tools.t4_desc">Detachable full-screen projector window for club visuals, live camera inputs, and karaoke audience displays.</p>
+        </div>
+      </div>
+
+      <!-- Tool 5: Brand New Edition Showcase -->
+      <div class="tool-box">
+        <div class="tool-img">
+          <img src="Brand_New.png" alt="vir2oseSOUND Signature Branding" loading="lazy">
+        </div>
+        <div class="tool-body">
+          <h4 data-i18n="tools.t5_title">Signature vir2ose Design</h4>
+          <p data-i18n="tools.t5_desc">Master-crafted by Waldemar Krucinski. Handcrafted gold bezels, dark obsidian layout, and bespoke German audio engineering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       TECHNICAL SPECIFICATIONS
+       ========================================================================= -->
+  <section id="specs" class="section-wrap" style="padding-top: 20px;">
+    <span class="section-tag" data-i18n="specs.tag">PERFORMANCE SPECS</span>
+    <h2 class="section-title" data-i18n="specs.title">Technical <span>Specifications</span></h2>
+    <p class="section-lead" data-i18n="specs.lead">
+      Pure C++20 and native DSP architectures guarantee instant response times and ultra-lightweight memory footprint.
+    </p>
+
+    <div class="specs-card">
+      <div class="spec-item">
+        <span class="spec-label" data-i18n="specs.s1_label">Audio Engine</span>
+        <span class="spec-value" data-i18n="specs.s1_val">64-bit Floating-Point DSP / Sample Master Clock</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label" data-i18n="specs.s2_label">Audio Formats</span>
+        <span class="spec-value" data-i18n="specs.s2_val">FLAC, WAV, AIFF, MP3, OGG, AAC (Up to 192 kHz)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label" data-i18n="specs.s3_label">Video & Visuals</span>
+        <span class="spec-value" data-i18n="specs.s3_val">MP4, AVI, MKV, CDG Karaoke, LRC Timed Lyrics</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label" data-i18n="specs.s4_label">Spatial Acoustics</span>
+        <span class="spec-value" data-i18n="specs.s4_val">3D Binaural HRTF & Multichannel Surround</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label" data-i18n="specs.s5_label">Operating Systems</span>
+        <span class="spec-value" data-i18n="specs.s5_val">Windows 10 / 11 (64-Bit), Tablet Touch Optimized</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label" data-i18n="specs.s6_label">Licensing Model</span>
+        <span class="spec-value" data-i18n="specs.s6_val">Perpetual Lifetime License • Zero Subscriptions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer>
+    <div class="brand">vir2oseSOUND • DJ V-SCRATCH LIVE</div>
+    <p data-i18n="footer.rights">© 2026 Waldemar Krucinski (vir2ose). All Rights Reserved.</p>
+    <p style="margin-top: 8px; color: #5a5c66;" data-i18n="footer.sub">turntablism.waldemar-krucinski.com • Professional Studio Solutions</p>
+  </footer>
+
+  <!-- =========================================================================
+       I18N TRANSLATION SCRIPT (EN, DE, PL)
+       ========================================================================= -->
+  <script>
+    const translations = {
+      en: {
+        "nav.features": "FEATURES",
+        "nav.spatial": "3D SPATIAL",
+        "nav.video": "V-VIDEO",
+        "nav.tools": "TOOLS",
+        "nav.specs": "SPECS",
+        "hero.badge1": "STANDALONE CONSOLE",
+        "hero.badge2": "3D IMMERSIVE",
+        "hero.badge3": "NO SUBSCRIPTION",
+        "hero.btnTrial": "14-Day Free Trial",
+        "hero.btnBuy": "Get Lifetime License",
+        "hero.scrollHint": "EXPLORE STUDIO",
+        "core.tag": "VIR2OSESOUND FLAGSHIP",
+        "core.title": "The Heart of Modern <span>Turntablism</span>",
+        "core.lead": "Engineered from the ground up for zero-latency vinyl scratching, precision beat-matching, and tactile live performance.",
+        "core.badge1": "DUAL DECK ENGINE",
+        "core.h3_scratch": "DJ V-SCRATCH LIVE 1.0",
+        "core.desc_scratch": "Ultra-realistic vinyl emulation with interactive needle drops, multi-point cueing, real-time BPM detection, 3-band studio isolator EQ, and full tactile touch mode for Windows tablets.",
+        "core.feat1": "High-Resolution Physical Vinyl & Scratch Engine",
+        "core.feat2": "Performance Pads: Hot Cue, Loop, Roll, Slicer",
+        "core.feat3": "Dedicated Tablet Touch Mode with Scaled Hit-Boxes",
+        "core.feat4": "ASIO & CoreAudio Ultra Low Latency Processing",
+        "chopper.badge": "SAMPLE & SLICE",
+        "chopper.title": "V-CHOPPER Sample Engine",
+        "chopper.desc": "Slice, randomize, and re-trigger breaks and vocal drops on the fly. Real-time transient detection locks every chop tightly onto the master groove.",
+        "chopper.feat1": "Automatic Transient & Grid Beat Slicing",
+        "chopper.feat2": "Randomizer & Re-Arranger for Instant Remixing",
+        "chopper.feat3": "Zero-Glitch Waveform Scrubbing & Stereo Bed Routing",
+        "spatial.tag": "IMMERSIVE REVOLUTION",
+        "spatial.title": "V-SPHERE <span>3D Spatial Audio</span>",
+        "spatial.lead": "Move beyond ordinary stereo. Position decks, vocals, and effects freely across full 360-degree binaural 3D space with real-time HRTF acoustic simulation.",
+        "spatial.badge": "360° ACOUSTICS",
+        "spatial.h3": "Binaural & Surround Master",
+        "spatial.desc": "Audiophile-grade immersive positioning for high-end club sound systems and standard studio headphones. Orbit tracks in real-time or lock sound stages around your audience.",
+        "spatial.feat1": "Full 360° Azimuth & Elevation Soundstage Navigation",
+        "spatial.feat2": "Psychoacoustic HRTF Filtering with Room Reflections",
+        "spatial.feat3": "Auto-Motion Orbital Trajectories & Gesture Control",
+        "video.tag": "VISUAL & PERFORMANCE",
+        "video.title": "V-VIDEO & <span>Live Stream Engine</span>",
+        "video.lead": "Sample-accurate synchronization between music, high-definition video feeds, synchronized CDG / LRC karaoke lyrics, and low-latency broadcasting.",
+        "video.badge": "A/V PTS TRACKING",
+        "video.h3": "Audio-Master Clock Synchronized",
+        "video.desc": "Zero drift: Video and scrolling lyrics are slaved directly to the DSP audio sample buffer. Pitch changes and scratching immediately warp visual streams in perfect synchrony.",
+        "video.feat1": "Hardware-Accelerated Video Decoding (MP4, MKV, AVI)",
+        "video.feat2": "Dual Video Screens for Master Output & DJ Booth Monitor",
+        "video.feat3": "Live CDG Karaoke Lyrics Engine with Pitch Tracking",
+        "tools.tag": "SUITE EXTENSIONS",
+        "tools.title": "Engineered for <span>Total Workflow</span>",
+        "tools.lead": "Every tool in the vir2oseSOUND suite is meticulously crafted for clarity, rapid muscle memory, and flawless performance on stage.",
+        "tools.t1_title": "Precision Center Mixer",
+        "tools.t1_desc": "High-precision optical crossfader curves, dual LED VU meters, headphone pre-cue routing, and dedicated studio gain trims.",
+        "tools.t2_title": "Spectral Waveform Zoom",
+        "tools.t2_desc": "Multi-color frequency-split audio waveforms showing bass kicks, snare transients, and vocal lines with sample-level zooming.",
+        "tools.t3_title": "High-Speed Crate & Playlist Library",
+        "tools.t3_desc": "Lightning-fast audio database search, smart folders, instant BPM sorting, key matching, and drag-and-drop deck loading.",
+        "tools.t4_title": "Dual-Monitor Video Window",
+        "tools.t4_desc": "Detachable full-screen projector window for club visuals, live camera inputs, and karaoke audience displays.",
+        "tools.t5_title": "Signature vir2ose Design",
+        "tools.t5_desc": "Master-crafted by Waldemar Krucinski. Handcrafted gold bezels, dark obsidian layout, and bespoke German audio engineering.",
+        "specs.tag": "PERFORMANCE SPECS",
+        "specs.title": "Technical <span>Specifications</span>",
+        "specs.lead": "Pure C++20 and native DSP architectures guarantee instant response times and ultra-lightweight memory footprint.",
+        "specs.s1_label": "Audio Engine",
+        "specs.s1_val": "64-bit Floating-Point DSP / Sample Master Clock",
+        "specs.s2_label": "Audio Formats",
+        "specs.s2_val": "FLAC, WAV, AIFF, MP3, OGG, AAC (Up to 192 kHz)",
+        "specs.s3_label": "Video & Visuals",
+        "specs.s3_val": "MP4, AVI, MKV, CDG Karaoke, LRC Timed Lyrics",
+        "specs.s4_label": "Spatial Acoustics",
+        "specs.s4_val": "3D Binaural HRTF & Multichannel Surround",
+        "specs.s5_label": "Operating Systems",
+        "specs.s5_val": "Windows 10 / 11 (64-Bit), Tablet Touch Optimized",
+        "specs.s6_label": "Licensing Model",
+        "specs.s6_val": "Perpetual Lifetime License • Zero Subscriptions",
+        "footer.rights": "© 2026 Waldemar Krucinski (vir2ose). All Rights Reserved.",
+        "footer.sub": "turntablism.waldemar-krucinski.com • Professional Studio Solutions"
+      },
+      de: {
+        "nav.features": "FUNKTIONEN",
+        "nav.spatial": "3D SPATIAL",
+        "nav.video": "V-VIDEO",
+        "nav.tools": "WERKZEUGE",
+        "nav.specs": "SPEZIFIKATIONEN",
+        "hero.badge1": "STANDALONE KONSOLE",
+        "hero.badge2": "3D IMMERSIV",
+        "hero.badge3": "KEIN ABONNEMENT",
+        "hero.btnTrial": "14-Tage Testversion",
+        "hero.btnBuy": "Lebenslange Lizenz Kaufen",
+        "hero.scrollHint": "STUDIO ENTDECKEN",
+        "core.tag": "VIR2OSESOUND FLAGGSCHIFF",
+        "core.title": "Das Herzstück des modernen <span>Turntablism</span>",
+        "core.lead": "Von Grund auf entwickelt für latenzfreies Vinyl-Scratching, präzises Beat-Matching und haptische Live-Performances.",
+        "core.badge1": "DUAL-DECK ENGINE",
+        "core.h3_scratch": "DJ V-SCRATCH LIVE 1.0",
+        "core.desc_scratch": "Ultra-realistische Vinyl-Emulation mit interaktivem Nadelaufsetzen, Multi-Cue-Punkten, Echtzeit-BPM-Erkennung, 3-Band-Studio-Isolator-EQ und vollem Tablet-Touch-Modus für Windows-Tablets.",
+        "core.feat1": "Hochauflösende physikalische Vinyl- & Scratch-Engine",
+        "core.feat2": "Performance-Pads: Hot Cue, Loop, Roll, Slicer",
+        "core.feat3": "Eigener Tablet-Touch-Modus mit vergrößerten Touch-Zonen",
+        "core.feat4": "ASIO & CoreAudio Ultra-Low-Latency Signalverarbeitung",
+        "chopper.badge": "SAMPLEN & SCHNEIDEN",
+        "chopper.title": "V-CHOPPER Sample-Engine",
+        "chopper.desc": "Breaks und Vocal-Drops in Echtzeit schneiden, randomisieren und neu triggern. Die präzise Transienten-Erkennung hält jeden Chop perfekt im Master-Groove.",
+        "chopper.feat1": "Automatische Transienten- & Beat-Grid-Zerlegung",
+        "chopper.feat2": "Randomizer & Re-Arranger für spontane Remixes",
+        "chopper.feat3": "Knackfreies Waveform-Scrubbing & Stereo-Bed-Routing",
+        "spatial.tag": "IMMERSIVE REVOLUTION",
+        "spatial.title": "V-SPHERE <span>3D Spatial Audio</span>",
+        "spatial.lead": "Weit über gewöhnliches Stereo hinaus: Platziere Decks, Gesang und Effekte frei im gesamten 360-Grad-Binaural-Raum mit HRTF-Echtzeitsimulation.",
+        "spatial.badge": "360° AKUSTIK",
+        "spatial.h3": "Binaural & Surround Master",
+        "spatial.desc": "Audiophile Raumpositionierung für anspruchsvolle Club-Soundsysteme und Standard-Studiokopfhörer. Lasse Spuren live um den Hörer kreisen oder baue feste Klangbühnen.",
+        "spatial.feat1": "Volle 360° Azimut- & Elevations-Klangbühnen-Navigation",
+        "spatial.feat2": "Psychoakustische HRTF-Filterung mit Raumreflexionen",
+        "spatial.feat3": "Auto-Motion Orbital-Trajektorien & Gestensteuerung",
+        "video.tag": "VISUELL & PERFORMANCE",
+        "video.title": "V-VIDEO & <span>Live-Stream-Engine</span>",
+        "video.lead": "Sample-genaue Synchronisation zwischen Musik, HD-Videostreams, lippensynchronen CDG/LRC-Karaoke-Texten und latenzfreiem Streaming.",
+        "video.badge": "A/V PTS TRACKING",
+        "video.h3": "Audio-Master-Clock Synchronisiert",
+        "video.desc": "Kein Zeitversatz: Video und durchlaufende Texte folgen unnachgiebig dem Audio-Sample-Puffer. Pitch-Änderungen und Scratches verformen das Bild synchron.",
+        "video.feat1": "Hardware-beschleunigte Videodekodierung (MP4, MKV, AVI)",
+        "video.feat2": "Zwei Videobildschirme für Master-Ausgabe & DJ-Booth-Monitor",
+        "video.feat3": "Live CDG-Karaoke-Engine mit Pitch-Tracking",
+        "tools.tag": "STUDIO-ERWEITERUNGEN",
+        "tools.title": "Entwickelt für den <span>perfekten Workflow</span>",
+        "tools.lead": "Jedes Werkzeug der vir2oseSOUND-Suite wurde penibel für Übersicht, blindes Muskelgedächtnis und absolute Zuverlässigkeit auf der Bühne konzipiert.",
+        "tools.t1_title": "Präzisions-Mischpult",
+        "tools.t1_desc": "Optische Crossfader-Kurven, Dual-LED-Peakmeter, Vorhör-Routing und dedizierte Studio-Gain-Regler.",
+        "tools.t2_title": "Spektral-Wellenform-Zoom",
+        "tools.t2_desc": "Mehrfarbige frequenzgetrennte Wellenformen für Kick, Snare und Vocals mit Zoom bis auf Einzelsample-Ebene.",
+        "tools.t3_title": "High-Speed Playlisten & Crates",
+        "tools.t3_desc": "Blitzschnelle Datenbanksuche, intelligente Ordner, BPM-Sortierung, Key-Matching und Drag-and-Drop auf die Decks.",
+        "tools.t4_title": "Zweitmonitor-Videofenster",
+        "tools.t4_desc": "Auskoppelbares Vollbildfenster für Club-Beamer, Live-Kamera-Inputs und Karaoke-Publikumsanzeige.",
+        "tools.t5_title": "vir2ose Signature-Design",
+        "tools.t5_desc": "Handgefertigt von Waldemar Krucinski. Goldene Akzente, dunkles Obsidian-Layout und präzise deutsche Audio-Ingenieurskunst.",
+        "specs.tag": "LEISTUNGSDATEN",
+        "specs.title": "Technische <span>Spezifikationen</span>",
+        "specs.lead": "Reines C++20 und native DSP-Architektur garantieren unmittelbare Reaktionszeiten und minimalen Speicherbedarf.",
+        "specs.s1_label": "Audio-Engine",
+        "specs.s1_val": "64-Bit Floating-Point DSP / Sample-Master-Clock",
+        "specs.s2_label": "Audio-Formate",
+        "specs.s2_val": "FLAC, WAV, AIFF, MP3, OGG, AAC (bis zu 192 kHz)",
+        "specs.s3_label": "Video & Visuals",
+        "specs.s3_val": "MP4, AVI, MKV, CDG Karaoke, LRC Timed Lyrics",
+        "specs.s4_label": "Raumakustik",
+        "specs.s4_val": "3D Binaural HRTF & Mehrkanal-Surround",
+        "specs.s5_label": "Betriebssysteme",
+        "specs.s5_val": "Windows 10 / 11 (64-Bit), Tablet-Touch-optimiert",
+        "specs.s6_label": "Lizenzmodell",
+        "specs.s6_val": "Lebenslange Einzellizenz • Keine Abos",
+        "footer.rights": "© 2026 Waldemar Krucinski (vir2ose). Alle Rechte vorbehalten.",
+        "footer.sub": "turntablism.waldemar-krucinski.com • Professionelle Studio-Lösungen"
+      },
+      pl: {
+        "nav.features": "FUNKCJE",
+        "nav.spatial": "3D SPATIAL",
+        "nav.video": "V-VIDEO",
+        "nav.tools": "NARZĘDZIA",
+        "nav.specs": "SPECYFIKACJA",
+        "hero.badge1": "KONSOLA STANDALONE",
+        "hero.badge2": "DŹWIĘK 3D",
+        "hero.badge3": "BEZ SUBSKRYPCJI",
+        "hero.btnTrial": "14 Dni Wersja Próbna",
+        "hero.btnBuy": "Kup Licencję Dożywotnią",
+        "hero.scrollHint": "ODKRYJ STUDIO",
+        "core.tag": "FLAGOWIEC VIR2OSESOUND",
+        "core.title": "Serce Współczesnego <span>Turntablizmu</span>",
+        "core.lead": "Zaprojektowane od podstaw dla bezstratnego, wolnego od opóźnień scratchingu winylowego, precyzyjnego miksowania i występów na żywo.",
+        "core.badge1": "SILNIK DUAL DECK",
+        "core.h3_scratch": "DJ V-SCRATCH LIVE 1.0",
+        "core.desc_scratch": "Niezwykle realistyczna emulacja winylu z interaktywnym opuszczaniem igły, punktami cue, detekcją BPM w czasie rzeczywistym, 3-pasmowym izolatorem EQ oraz pełnym trybem dotykowym dla tabletów z systemem Windows.",
+        "core.feat1": "Fizyczny silnik symulacji winylu i scratchingu wysokiej rozdzielczości",
+        "core.feat2": "Pady wydajnościowe: Hot Cue, Loop, Roll, Slicer",
+        "core.feat3": "Dedykowany tryb dotykowy Tablet Touch z powiększonymi polami",
+        "core.feat4": "Ultra-niska latencja dzięki przetwarzaniu ASIO & CoreAudio",
+        "chopper.badge": "SAMPLOWANIE I CIĘCIE",
+        "chopper.title": "Silnik Sampli V-CHOPPER",
+        "chopper.desc": "Tnij, losuj i wyzwalaj partie perkusyjne oraz wstawki wokalne w locie. Precyzyjna detekcja transjentów idealnie trzyma każdy sampel w rytmie utworu.",
+        "chopper.feat1": "Automatyczne cięcie siatki rytmicznej i transjentów",
+        "chopper.feat2": "Randomizer i re-aranżer do błyskawicznych remiksów na żywo",
+        "chopper.feat3": "Płynne przewijanie fal dźwiękowych bez trzasków i routing stereo",
+        "spatial.tag": "REWOLUCJA PRZESTRZENNA",
+        "spatial.title": "V-SPHERE <span>Dźwięk Przestrzenny 3D</span>",
+        "spatial.lead": "Wyjdź poza zwykłe stereo. Umieszczaj decki, wokale i efekty swobodnie w pełnej 360-stopniowej przestrzeni binauralnej dzięki symulacji HRTF w czasie rzeczywistym.",
+        "spatial.badge": "AKUSTYKA 360°",
+        "spatial.h3": "Mistrz Binauralny i Surround",
+        "spatial.desc": "Audiofilskie pozycjonowanie przestrzenne dla nagłośnienia klubowego i standardowych słuchawek studyjnych. Animuj trajektorie dźwięku wokół słuchacza na żywo.",
+        "spatial.feat1": "Pełna nawigacja sceny dźwiękowej 360° (azymut i elewacja)",
+        "spatial.feat2": "Psychoakustyczne filtry HRTF z odbiciami pomieszczenia",
+        "spatial.feat3": "Automatyczne trajektorie orbitalne i kontrola gestami",
+        "video.tag": "WIZUALIA I WYSTĘPY",
+        "video.title": "V-VIDEO i <span>Streaming na Żywo</span>",
+        "video.lead": "Idealna synchronizacja próbka w próbkę między dźwiękiem, wideo w wysokiej rozdzielczości, tekstem karaoke CDG / LRC oraz transmisją online.",
+        "video.badge": "ŚLEDZENIE PTS A/V",
+        "video.h3": "Zsynchronizowany Zegar Audio Master",
+        "video.desc": "Zero opóźnień: Obraz i napisy są bezpośrednio podporządkowane buforowi audio DSP. Zmiany tempa i scratch natychmiast idealnie przekształcają obraz wideo.",
+        "video.feat1": "Sprzętowe dekodowanie wideo (MP4, MKV, AVI)",
+        "video.feat2": "Dwa ekrany wideo dla wyjścia głównego i monitora DJ-a",
+        "video.feat3": "Silnik tekstu karaoke CDG na żywo ze śledzeniem tonacji",
+        "tools.tag": "ROZSZERZENIA STUDIA",
+        "tools.title": "Zaprojektowane dla <span>Idealnego Przepływu Pracy</span>",
+        "tools.lead": "Każdy element pakietu vir2oseSOUND został precyzyjnie dopracowany pod kątem przejrzystości, pamięci mięśniowej i niezawodności na scenie.",
+        "tools.t1_title": "Precyzyjny Mikser Centralny",
+        "tools.t1_desc": "Optyczne krzywe crossfadera, podwójne wskaźniki VU LED, odsłuch słuchawkowy oraz dedykowana regulacja gainu.",
+        "tools.t2_title": "Spektralny Zoom Falowy",
+        "tools.t2_desc": "Wielokolorowe pasma częstotliwości ułatwiające lokalizację stopy, werbla i wokali z powiększeniem do pojedynczych próbek.",
+        "tools.t3_title": "Szybka Baza Playlist i Skrzyń",
+        "tools.t3_desc": "Błyskawiczne wyszukiwanie w bazie utworów, inteligentne foldery, sortowanie BPM, dopasowywanie tonacji i ładowanie metodą przeciągnij i upuść.",
+        "tools.t4_title": "Okno Wideo na Drugi Ekran",
+        "tools.t4_desc": "Odpinane pełnoekranowe okno na projektory klubowe, kamery na żywo oraz wyświetlanie karaoke dla publiczności.",
+        "tools.t5_title": "Autorski Design vir2ose",
+        "tools.t5_desc": "Mistrzowskie wykonanie Waldemara Krucińskiego. Złote detale, ciemna obsydianowa obudowa i precyzyjna inżynieria dźwięku.",
+        "specs.tag": "SPECYFIKACJA TECHNICZNA",
+        "specs.title": "Dane <span>Wydajnościowe</span>",
+        "specs.lead": "Czysty kod C++20 oraz natywna architektura DSP gwarantują natychmiastową reakcję i minimalne zużycie pamięci.",
+        "specs.s1_label": "Silnik Audio",
+        "specs.s1_val": "64-bitowy zmiennoprzecinkowy DSP / Niezależny Sample Master Clock",
+        "specs.s2_label": "Formaty Audio",
+        "specs.s2_val": "FLAC, WAV, AIFF, MP3, OGG, AAC (do 192 kHz)",
+        "specs.s3_label": "Wideo i Grafika",
+        "specs.s3_val": "MP4, AVI, MKV, Karaoke CDG, Zsynchronizowane LRC",
+        "specs.s4_label": "Akustyka Przestrzenna",
+        "specs.s4_val": "3D Binaural HRTF oraz wielokanałowy Surround",
+        "specs.s5_label": "Systemy Operacyjne",
+        "specs.s5_val": "Windows 10 / 11 (64-Bit), zoptymalizowany pod dotyk tabletu",
+        "specs.s6_label": "Model Licencji",
+        "specs.s6_val": "Dożywotnia licencja jednorazowa • Bez abonamentu",
+        "footer.rights": "© 2026 Waldemar Kruciński (vir2ose). Wszelkie prawa zastrzeżone.",
+        "footer.sub": "turntablism.waldemar-krucinski.com • Profesjonalne Rozwiązania Studyjne"
+      }
+    };
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      document.documentElement.setAttribute('lang', lang);
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      localStorage.setItem('vir2ose_lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-lang');
+        setLanguage(selected);
+      });
+    });
+
+    // Initial Language: EN as Primary, or saved preference, or browser language
+    const savedLang = localStorage.getItem('vir2ose_lang');
+    if (savedLang && translations[savedLang]) {
+      setLanguage(savedLang);
+    } else {
+      setLanguage('en');
+    }
+  </script>
 </body>
 </html>
