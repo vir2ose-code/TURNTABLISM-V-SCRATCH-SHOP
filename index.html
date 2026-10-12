@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ V-SCRATCH LIVE | vir2oseSOUND</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #030305;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: #000 url('LandingPage_V-SCRATCH 2.jpg') no-repeat center top;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 40px 60px 40px;
+    }
+
+    /* Subtile Vignette für nahtlosen Übergang nach unten */
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to bottom, transparent, #030305);
+      pointer-events: none;
+    }
+
+    /* Header Nav */
+    .navbar {
+      width: 100%;
+      max-width: 1600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #00d2ff;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #b5b5b5;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00d2ff;
+    }
+
+    /* Call to Action Container */
+    .cta-wrapper {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: auto;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 25px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #8e909a;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .badge-bar span {
+      color: #00d2ff;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 16px 36px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-trial {
+      background: #00d2ff;
+      color: #050507;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, #d4af37 0%, #aa8010 100%);
+      color: #ffffff;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-trial:hover {
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
+    }
+
+    .btn-buy:hover {
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn {
+        text-align: center;
+      }
+      .badge-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero-section">
+    <nav class="navbar">
+      <div class="nav-brand">vir2oseSOUND</div>
+      <ul class="nav-links">
+        <li><a href="#features">FEATURES</a></li>
+        <li><a href="#spatial">3D SPATIAL</a></li>
+        <li><a href="#karaoke">V-VIDEO</a></li>
+        <li><a href="#specs">SPECS</a></li>
+      </ul>
+    </nav>
+
+    <div class="cta-wrapper">
+      <div class="badge-bar">
+        <span>◆</span> Standalone Console <span>◆</span> 3D Immersive <span>◆</span> No Subscription
+      </div>
+      <div class="btn-group">
+        <a href="#trial" class="btn btn-trial">14-Tage Testversion</a>
+        <a href="#buy" class="btn btn-buy">Get Lifetime License</a>
+      </div>
+    </div>
+  </header>
+
+</body>
+</html>
