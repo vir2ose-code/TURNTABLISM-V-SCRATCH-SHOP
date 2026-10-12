@@ -1367,7 +1367,7 @@
         <li><a href="#update" class="drawer-link modal-trigger" data-modal="updateModal" data-i18n="nav.update">UPDATE</a></li>
       </ul>
       <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
-        <a href="https://github.com/vir2ose-code/TURNTABLISM-V-SCRATCH-SHOP/releases/download/1.0.0/DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe" class="btn btn-trial drawer-link" data-i18n="hero.btnTrial" style="width: 100%;">14-Day Free Trial</a>
+        <a href="#trial" class="btn btn-trial drawer-link modal-trigger" data-modal="trialModal" data-i18n="hero.btnTrial" style="width: 100%;">14-Day Free Trial</a>
         <button type="button" class="btn btn-buy-standard" onclick="buyScratchEdition(PADDLE_PRICES.standard)" style="width: 100%;">
           <span data-i18n="hero.btnStandard">Standard Edition (79,99 €)</span>
         </button>
@@ -1385,7 +1385,7 @@
         <span class="diamond">◆</span> <span data-i18n="hero.badge3">NO SUBSCRIPTION</span>
       </div>
       <div class="btn-group">
-        <a href="https://github.com/vir2ose-code/TURNTABLISM-V-SCRATCH-SHOP/releases/download/1.0.0/DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe" class="btn btn-trial" data-i18n="hero.btnTrial">14-Day Free Trial</a>
+        <a href="#trial" class="btn btn-trial modal-trigger" data-modal="trialModal" data-i18n="hero.btnTrial">14-Day Free Trial</a>
         <button type="button" class="btn btn-buy-standard" onclick="buyScratchEdition(PADDLE_PRICES.standard)">
           <span data-i18n="hero.btnStandard">Standard Edition (79,99 €)</span>
         </button>
@@ -1662,6 +1662,55 @@
     </div>
   </div>
 
+  <!-- 14-Day Free Trial Download Modal (Web3Forms Integration) -->
+  <div class="info-modal-backdrop" id="trialModal">
+    <div class="info-modal-card" style="max-width: 520px;">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title"><span>vir2oseSOUND</span> • <span data-i18n="trial.modal_title">14-Day Free Trial</span></h3>
+      <p style="color: var(--gold-light); font-size: 0.82rem; margin-bottom: 12px; font-weight: 600;" data-i18n="trial.modal_subtitle">
+        DJ V-SCRATCH LIVE 1.0.0 • Full Ultimate Suite Access
+      </p>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: #a2a4b0; margin-bottom: 18px;" data-i18n="trial.modal_desc">
+          Enter your name and email to immediately download your 14-day full trial setup package (Windows 10/11 64-Bit, ~7.4 MB).
+        </p>
+
+        <form id="trialDownloadForm">
+          <input type="hidden" name="access_key" value="fefe6837-4746-405c-8adb-6262af6e0d14">
+          <input type="hidden" name="subject" value="Neuer Trial Download: DJ V-SCRATCH LIVE">
+          <input type="hidden" name="from_name" value="DJ V-SCRATCH LIVE Studio">
+
+          <div style="margin-bottom: 14px;">
+            <label style="display: block; font-size: 0.74rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px;" data-i18n="trial.name_label">Name / DJ Alias</label>
+            <input type="text" name="name" required placeholder="e.g. DJ Shadow / Waldemar" style="width: 100%; padding: 11px 14px; background: rgba(5, 5, 10, 0.85); border: 1px solid rgba(190, 179, 118, 0.4); border-radius: 5px; color: #ffffff; font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#beb376'" onblur="this.style.borderColor='rgba(190, 179, 118, 0.4)'">
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <label style="display: block; font-size: 0.74rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px;" data-i18n="trial.email_label">Email Address</label>
+            <input type="email" name="email" required placeholder="your.studio@email.com" style="width: 100%; padding: 11px 14px; background: rgba(5, 5, 10, 0.85); border: 1px solid rgba(190, 179, 118, 0.4); border-radius: 5px; color: #ffffff; font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#beb376'" onblur="this.style.borderColor='rgba(190, 179, 118, 0.4)'">
+          </div>
+
+          <div style="margin-bottom: 18px;">
+            <label style="display: block; font-size: 0.74rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px;" data-i18n="trial.note_label">Note / Studio Setup (Optional)</label>
+            <textarea name="message" rows="2" placeholder="e.g. Windows 11, Gemini GMX / Pioneer Controller, ASIO" style="width: 100%; padding: 10px 14px; background: rgba(5, 5, 10, 0.85); border: 1px solid rgba(190, 179, 118, 0.4); border-radius: 5px; color: #ffffff; font-family: inherit; font-size: 0.85rem; outline: none; resize: vertical; transition: border-color 0.2s;" onfocus="this.style.borderColor='#beb376'" onblur="this.style.borderColor='rgba(190, 179, 118, 0.4)'"></textarea>
+          </div>
+
+          <button type="submit" id="trialSubmitBtn" class="btn btn-trial" style="width: 100%; padding: 13px 20px; font-size: 0.82rem; letter-spacing: 1.5px; font-weight: 800; cursor: pointer;">
+            <span id="trialBtnText" data-i18n="trial.btn_submit">START DOWNLOAD NOW (7.4 MB)</span>
+          </button>
+        </form>
+
+        <div id="trialSuccessMsg" style="display: none; margin-top: 18px; padding: 14px; background: rgba(0, 210, 255, 0.12); border: 1px solid var(--cyan-accent); border-radius: 6px; text-align: center;">
+          <p style="color: #ffffff; font-weight: 700; margin-bottom: 6px;" data-i18n="trial.success_title">✓ Thank you! Your download is starting...</p>
+          <p style="font-size: 0.82rem; color: #c4c6d2;">
+            <span data-i18n="trial.fallback_text">If the download didn't start automatically:</span><br>
+            <a href="https://github.com/vir2ose-code/TURNTABLISM-V-SCRATCH-SHOP/releases/download/1.0.0/DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe" style="color: var(--cyan-accent); text-decoration: underline; font-weight: 600;" data-i18n="trial.manual_link">Click here to download directly</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Interactive License Edition Selection Modal -->
   <div class="info-modal-backdrop" id="editionModal">
     <div class="info-modal-card" style="max-width: 860px; width: 95%;">
@@ -1756,6 +1805,16 @@
         "hero.btnUltimate": "Ultimate Suite • 129,99 €",
         "hero.compareEditions": "⇄ Compare Editions & Features",
         "modal.edition_title": "Choose Your License Edition",
+        "trial.modal_title": "14-Day Free Trial",
+        "trial.modal_subtitle": "DJ V-SCRATCH LIVE 1.0.0 • Full Ultimate Suite Access",
+        "trial.modal_desc": "Enter your name and email to immediately download your 14-day trial installer (Windows 10/11 64-Bit, ~7.4 MB).",
+        "trial.name_label": "Name / DJ Alias",
+        "trial.email_label": "Email Address",
+        "trial.note_label": "Note / Studio Setup (Optional)",
+        "trial.btn_submit": "START DOWNLOAD NOW (7.4 MB)",
+        "trial.success_title": "✓ Thank you! Your download is starting...",
+        "trial.fallback_text": "If the download didn't start automatically:",
+        "trial.manual_link": "Click here to download directly",
         "edition.std_badge": "ESSENTIAL TURNTABLISM",
         "edition.std_subname": "Standard Edition",
         "edition.suite_badge": "FLAGSHIP COMPLETE SUITE • BEST VALUE",
@@ -1875,6 +1934,16 @@
         "hero.btnUltimate": "Ultimate Suite • 129,99 €",
         "hero.compareEditions": "⇄ Editionen & Funktionen vergleichen",
         "modal.edition_title": "Wähle deine Lizenz-Edition",
+        "trial.modal_title": "14-Tage Kostenlose Testversion",
+        "trial.modal_subtitle": "DJ V-SCRATCH LIVE 1.0.0 • Voller Ultimate Suite Zugriff",
+        "trial.modal_desc": "Trage deinen Namen und deine E-Mail ein, um das 14-Tage-Testpaket sofort herunterzuladen (Windows 10/11 64-Bit, ~7,4 MB).",
+        "trial.name_label": "Name / DJ Name",
+        "trial.email_label": "E-Mail-Adresse",
+        "trial.note_label": "Notiz / Studio-Setup (Optional)",
+        "trial.btn_submit": "JETZT DOWNLOAD STARTEN (7,4 MB)",
+        "trial.success_title": "✓ Vielen Dank! Dein Download startet jetzt...",
+        "trial.fallback_text": "Falls der Download nicht automatisch startet:",
+        "trial.manual_link": "Hier klicken für direkten Download",
         "edition.std_badge": "ESSENTIAL TURNTABLISM",
         "edition.std_subname": "Standard Edition",
         "edition.suite_badge": "FLAGGSCHIFF KOMPLETT-SUITE • BEST VALUE",
@@ -1994,6 +2063,16 @@
         "hero.btnUltimate": "Ultimate Suite • 129,99 €",
         "hero.compareEditions": "⇄ Porównaj Edycje i Funkcje",
         "modal.edition_title": "Wybierz Swoją Edycję Licencji",
+        "trial.modal_title": "14-Dniowa Darmowa Wersja Próbna",
+        "trial.modal_subtitle": "DJ V-SCRATCH LIVE 1.0.0 • Pełny Dostęp Ultimate Suite",
+        "trial.modal_desc": "Wpisz swoje imię i adres e-mail, aby natychmiast pobrać 14-dniowy pakiet instalacyjny (Windows 10/11 64-Bit, ~7.4 MB).",
+        "trial.name_label": "Imię / Pseudonim DJ",
+        "trial.email_label": "Adres E-Mail",
+        "trial.note_label": "Notatka / Sprzęt Studyjny (Opcjonalnie)",
+        "trial.btn_submit": "ROZPOCZNIJ POBIERANIE (7.4 MB)",
+        "trial.success_title": "✓ Dziękujemy! Pobieranie rozpoczyna się...",
+        "trial.fallback_text": "Jeśli pobieranie nie rozpoczęło się automatycznie:",
+        "trial.manual_link": "Kliknij tutaj, aby pobrać bezpośrednio",
         "edition.std_badge": "ESSENTIAL TURNTABLISM",
         "edition.std_subname": "Standard Edition",
         "edition.suite_badge": "FLAGOWY PEŁNY PAKIET • NAJLEPSZY WYBÓR",
@@ -2299,6 +2378,49 @@
         }
       });
     });
+
+    /* =========================================================================
+       14-DAY TRIAL WEB3FORMS & INSTANT DOWNLOAD HANDLER
+       ========================================================================= */
+    const trialForm = document.getElementById('trialDownloadForm');
+    if (trialForm) {
+      trialForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const submitBtn = document.getElementById('trialSubmitBtn');
+        const btnText = document.getElementById('trialBtnText');
+        const successMsg = document.getElementById('trialSuccessMsg');
+
+        if (btnText) btnText.textContent = '... Preparing Download ...';
+        if (submitBtn) {
+          submitBtn.style.opacity = '0.7';
+          submitBtn.disabled = true;
+        }
+
+        const downloadUrl = 'https://github.com/vir2ose-code/TURNTABLISM-V-SCRATCH-SHOP/releases/download/1.0.0/DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe';
+
+        try {
+          const formData = new FormData(trialForm);
+          await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+        } catch (err) {
+          console.warn('Web3Forms lead submission error:', err);
+        }
+
+        // Switch to success state
+        trialForm.style.display = 'none';
+        if (successMsg) successMsg.style.display = 'block';
+
+        // Trigger automatic browser download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = downloadUrl;
+        downloadLink.setAttribute('download', 'DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      });
+    }
   </script>
 </body>
 </html>
