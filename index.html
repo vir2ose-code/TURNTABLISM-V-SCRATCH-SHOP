@@ -67,7 +67,6 @@
       line-height: 1.6;
     }
 
-    /* Ambient Glow Background behind sections */
     .ambient-glow {
       position: fixed;
       width: 600px;
@@ -78,9 +77,6 @@
       filter: blur(80px);
     }
 
-    /* =========================================================================
-       CINEMATIC AMBIENT VIDEO STAGE (BACKGROUND SLOW-MOTION & BLUR)
-       ========================================================================= */
     .bg-video-stage {
       position: fixed;
       top: 0;
@@ -109,10 +105,9 @@
     }
 
     .bg-video-layer.active {
-      opacity: 0.44; /* 20% more presence as requested */
+      opacity: 0.44;
     }
 
-    /* Dark cinematic film grain & gradient overlay to preserve sharp readable text without obscuring video */
     .bg-video-scrim {
       position: absolute;
       top: 0;
@@ -124,9 +119,6 @@
       -webkit-backdrop-filter: blur(1px);
     }
 
-    /* =========================================================================
-       HERO SECTION
-       ========================================================================= */
     .hero-section {
       position: relative;
       width: 100%;
@@ -152,9 +144,6 @@
       pointer-events: none;
     }
 
-    /* =========================================================================
-       NAVBAR & LANGUAGE SWITCHER
-       ========================================================================= */
     .navbar {
       width: 100%;
       max-width: 1680px;
@@ -201,7 +190,6 @@
       width: 100%;
     }
 
-    /* Language Switcher */
     .lang-switcher {
       display: flex;
       align-items: center;
@@ -245,7 +233,6 @@
       border-radius: 2px;
     }
 
-    /* Hamburger Toggle Button */
     .hamburger-btn {
       display: none;
       background: rgba(10, 10, 16, 0.7);
@@ -281,7 +268,6 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Mobile Drawer Overlay */
     .mobile-menu-drawer {
       position: fixed;
       top: 0;
@@ -348,7 +334,6 @@
       pointer-events: auto;
     }
 
-    /* Jump to Top Floating Button */
     .jump-to-top {
       position: fixed;
       bottom: 28px;
@@ -391,7 +376,6 @@
       fill: var(--gold-light);
     }
 
-    /* Info Modals (About, Help, Update) */
     .info-modal-backdrop {
       position: fixed;
       top: 0;
@@ -473,9 +457,6 @@
       margin-bottom: 6px;
     }
 
-    /* =========================================================================
-       HERO CALL TO ACTION (FILIGRAN, GOLD-EDEL)
-       ========================================================================= */
     .cta-wrapper {
       position: relative;
       z-index: 10;
@@ -514,7 +495,6 @@
       box-sizing: border-box;
     }
 
-    /* Filigrane Buttons */
     .btn {
       width: 100%;
       padding: 12px 6px;
@@ -538,7 +518,6 @@
       box-sizing: border-box;
     }
 
-    /* Testversion: Subtil, transparent mit Cyan Accent */
     .btn-trial {
       background: rgba(0, 210, 255, 0.08);
       color: #ffffff;
@@ -554,7 +533,6 @@
       transform: translateY(-2px);
     }
 
-    /* Standard Edition (79,99 €): Brushed Titanium / Silver (#7d7c78) */
     .btn-buy-standard,
     .btn-standard {
       background: linear-gradient(135deg, #9b9a95 0%, #7d7c78 50%, #605f5b 100%) !important;
@@ -572,7 +550,6 @@
       color: #000000 !important;
     }
 
-    /* Ultimate Suite (129,99 €): Edles vir2ose Studio Gold */
     .btn-buy-ultimate,
     .btn-ultimate {
       background: linear-gradient(135deg, #b5a867 0%, #9d9257 50%, #7d7340 100%) !important;
@@ -612,7 +589,6 @@
       text-shadow: 0 0 10px var(--gold-glow);
     }
 
-    /* Edition Comparison Modal Styling */
     .edition-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -702,7 +678,6 @@
       }
     }
 
-    /* Scroll Indicator Arrow */
     .scroll-hint {
       margin-top: 8px;
       color: var(--gold-light);
@@ -729,9 +704,6 @@
       50% { transform: translateY(6px); opacity: 0.9; }
     }
 
-    /* =========================================================================
-       SECTION CONTAINERS & TYPOGRAPHY
-       ========================================================================= */
     .section-wrap {
       max-width: 1480px;
       margin: 0 auto;
@@ -775,7 +747,6 @@
       font-weight: 400;
     }
 
-    /* Split Grid for Modules */
     .module-card {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -889,7 +860,6 @@
       font-size: 0.65rem;
     }
 
-    /* Grid for smaller feature showcase (Wave, Playlist, Screens) */
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -956,7 +926,6 @@
       line-height: 1.6;
     }
 
-    /* Specs & System Requirements */
     .specs-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -990,7 +959,6 @@
       font-weight: 500;
     }
 
-    /* Footer - Elegant, Subtle & Subdued (wie bei V-Channel Studio Pro Signature) */
     footer {
       position: relative;
       z-index: 10;
@@ -1053,9 +1021,6 @@
       letter-spacing: 1.2px;
     }
 
-    /* =========================================================================
-       RESPONSIVE DESIGN (TABLET & SMARTPHONE OPTIMIZATIONS)
-       ========================================================================= */
     @media (max-width: 1024px) {
       .module-card, .module-card.reversed {
         grid-template-columns: 1fr;
@@ -1070,7 +1035,6 @@
       }
     }
 
-    /* Mobile & Tablet Breakpoint: Hide linear nav, activate Hamburger */
     @media (max-width: 900px) {
       .navbar {
         width: 100%;
@@ -1084,7 +1048,7 @@
       }
 
       .nav-links {
-        display: none !important; /* Replaced by Hamburger Drawer */
+        display: none !important;
       }
 
       .hamburger-btn {
@@ -1092,7 +1056,6 @@
       }
     }
 
-    /* Smartphone Breakpoint (<= 768px) */
     @media (max-width: 768px) {
       .hero-section {
         min-height: 100vh;
@@ -1117,7 +1080,7 @@
 
       .cta-wrapper {
         margin-top: auto;
-        padding-top: 320px; /* Generous breathing room so buttons sit comfortably below background consoles */
+        padding-top: 320px;
         padding-bottom: 20px;
         gap: 16px;
         width: 100%;
@@ -1154,7 +1117,6 @@
         margin-top: 10px;
       }
 
-      /* Section Container */
       .section-wrap {
         padding: 60px 18px;
         position: relative;
@@ -1179,7 +1141,6 @@
         line-height: 1.6;
       }
 
-      /* Module Cards: Clean vertical order (Image FIRST, Info SECOND) */
       .module-card,
       .module-card.reversed {
         display: flex;
@@ -1218,7 +1179,6 @@
         line-height: 1.45;
       }
 
-      /* Tools Grid on Smartphones */
       .tools-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1241,7 +1201,6 @@
         font-size: 0.84rem;
       }
 
-      /* Specs Card */
       .specs-card {
         grid-template-columns: 1fr;
         padding: 22px 18px;
@@ -1265,7 +1224,6 @@
       }
     }
 
-    /* Small Smartphones (<= 480px) */
     @media (max-width: 480px) {
       .hero-section {
         min-height: auto;
@@ -1292,9 +1250,6 @@
   </style>
 </head>
 <body>
-  <!-- =========================================================================
-       CINEMATIC AMBIENT VIDEO STAGE
-       ========================================================================= -->
   <div class="bg-video-stage" aria-hidden="true">
     <video class="bg-video-layer active" id="bgVideo1" autoplay loop muted playsinline preload="auto">
       <source src="Assets_Video/video1.mp4" type="video/mp4">
@@ -1311,14 +1266,10 @@
     <div class="bg-video-scrim"></div>
   </div>
 
-  <!-- Ambient Background Spotlights -->
   <div class="ambient-glow" style="top: 15%; left: 5%;"></div>
   <div class="ambient-glow" style="top: 55%; right: 5%;"></div>
   <div class="ambient-glow" style="top: 85%; left: 10%;"></div>
 
-  <!-- =========================================================================
-       HERO HEADER
-       ========================================================================= -->
   <header class="hero-section">
     <nav class="navbar">
       <ul class="nav-links">
@@ -1332,7 +1283,6 @@
         <li><a href="#update" class="modal-trigger" data-modal="updateModal" data-i18n="nav.update">UPDATE</a></li>
       </ul>
 
-      <!-- Flag Language Switcher -->
       <div class="lang-switcher">
         <button class="lang-btn" data-lang="en" title="English" aria-label="English">
           <img src="EN.png" alt="English">
@@ -1345,7 +1295,6 @@
         </button>
       </div>
 
-      <!-- Mobile & Tablet Hamburger Toggle Button -->
       <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1353,7 +1302,6 @@
       </button>
     </nav>
 
-    <!-- Mobile Drawer Overlay & Backdrop -->
     <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
     <div class="mobile-menu-drawer" id="mobileDrawer">
       <ul class="mobile-nav-links">
@@ -1403,9 +1351,6 @@
     </div>
   </header>
 
-  <!-- =========================================================================
-       FLAGSHIP WORKSTATION: DJ V-SCRATCH LIVE
-       ========================================================================= -->
   <section id="features" class="section-wrap">
     <span class="section-tag" data-i18n="core.tag">VIR2OSESOUND FLAGSHIP</span>
     <h2 class="section-title" data-i18n="core.title">The Heart of Modern <span>Turntablism</span></h2>
@@ -1413,7 +1358,6 @@
       Engineered from the ground up for zero-latency vinyl scratching, precision beat-matching, and tactile live performance.
     </p>
 
-    <!-- Main Module 1: DJ V-SCRATCH LIVE CONSOLE -->
     <div class="module-card">
       <div class="module-preview">
         <img src="V-SCRATCH.png" alt="DJ V-SCRATCH LIVE Main Console" loading="lazy">
@@ -1433,7 +1377,6 @@
       </div>
     </div>
 
-    <!-- Main Module 2: V-CHOPPER -->
     <div class="module-card reversed">
       <div class="module-preview">
         <img src="V-CHOPPER.png" alt="V-CHOPPER Live Beat Slicer" loading="lazy">
@@ -1453,9 +1396,6 @@
     </div>
   </section>
 
-  <!-- =========================================================================
-       3D SPATIAL AUDIO ENGINE
-       ========================================================================= -->
   <section id="spatial" class="section-wrap" style="padding-top: 20px;">
     <span class="section-tag" data-i18n="spatial.tag">IMMERSIVE REVOLUTION</span>
     <h2 class="section-title" data-i18n="spatial.title">V-SPHERE <span>3D Spatial Audio</span></h2>
@@ -1482,9 +1422,6 @@
     </div>
   </section>
 
-  <!-- =========================================================================
-       V-VIDEO & LIVE STREAMING
-       ========================================================================= -->
   <section id="karaoke" class="section-wrap" style="padding-top: 20px;">
     <span class="section-tag" data-i18n="video.tag">VISUAL & PERFORMANCE</span>
     <h2 class="section-title" data-i18n="video.title">V-VIDEO & <span>Live Stream Engine</span></h2>
@@ -1511,9 +1448,6 @@
     </div>
   </section>
 
-  <!-- =========================================================================
-       ADDITIONAL STUDIO SUITE TOOLS & SCREENS (SCROLL SHOWCASE)
-       ========================================================================= -->
   <section id="tools" class="section-wrap" style="padding-top: 20px;">
     <span class="section-tag" data-i18n="tools.tag">SUITE EXTENSIONS</span>
     <h2 class="section-title" data-i18n="tools.title">Engineered for <span>Total Workflow</span></h2>
@@ -1522,7 +1456,6 @@
     </p>
 
     <div class="tools-grid">
-      <!-- Tool 1: Herzstück Center Console -->
       <div class="tool-box">
         <div class="tool-img">
           <img src="Herzstueck.png" alt="Center Mixer Engine" loading="lazy">
@@ -1533,7 +1466,6 @@
         </div>
       </div>
 
-      <!-- Tool 2: Audio Wave Window -->
       <div class="tool-box">
         <div class="tool-img">
           <img src="Audio_Wave-Window.png" alt="Audio Wave Window" loading="lazy">
@@ -1544,7 +1476,6 @@
         </div>
       </div>
 
-      <!-- Tool 3: Dynamic Playlist Management -->
       <div class="tool-box">
         <div class="tool-img">
           <img src="PlayLists.png" alt="Dynamic Playlist Library" loading="lazy">
@@ -1555,7 +1486,6 @@
         </div>
       </div>
 
-      <!-- Tool 4: Dedicated Video Screen -->
       <div class="tool-box">
         <div class="tool-img">
           <img src="Video_Screen.png" alt="Dedicated Video Screen Window" loading="lazy">
@@ -1566,7 +1496,6 @@
         </div>
       </div>
 
-      <!-- Tool 5: Brand New Edition Showcase -->
       <div class="tool-box">
         <div class="tool-img">
           <img src="Brand_New.png" alt="vir2oseSOUND Signature Branding" loading="lazy">
@@ -1579,9 +1508,6 @@
     </div>
   </section>
 
-  <!-- =========================================================================
-       TECHNICAL SPECIFICATIONS
-       ========================================================================= -->
   <section id="specs" class="section-wrap" style="padding-top: 20px;">
     <span class="section-tag" data-i18n="specs.tag">PERFORMANCE SPECS</span>
     <h2 class="section-title" data-i18n="specs.title">Technical <span>Specifications</span></h2>
@@ -1617,12 +1543,10 @@
     </div>
   </section>
 
-  <!-- Floating Jump to Top Arrow Button -->
   <button class="jump-to-top" id="jumpToTopBtn" aria-label="Jump to Top" title="Jump to top">
     <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
   </button>
 
-  <!-- Modals for ABOUT, HELP, UPDATE -->
   <div class="info-modal-backdrop" id="aboutModal">
     <div class="info-modal-card">
       <button class="modal-close-btn">&times;</button>
@@ -1662,7 +1586,7 @@
     </div>
   </div>
 
-  <!-- 14-Day Free Trial Download Modal (Web3Forms Integration) -->
+  <!-- 14-Day Free Trial Download Modal (DEAKTIVIERT / WARTUNG) -->
   <div class="info-modal-backdrop" id="trialModal">
     <div class="info-modal-card" style="max-width: 520px;">
       <button class="modal-close-btn">&times;</button>
@@ -1672,7 +1596,7 @@
       </p>
       <div class="modal-body">
         <p style="font-size: 0.88rem; color: #a2a4b0; margin-bottom: 18px;" data-i18n="trial.modal_desc">
-          Enter your name and email to immediately download your 14-day full trial setup package (Windows 10/11 64-Bit, ~7.4 MB).
+          Enter your name and email to request your 14-day full trial setup package.
         </p>
 
         <form id="trialDownloadForm">
@@ -1696,29 +1620,25 @@
           </div>
 
           <button type="submit" id="trialSubmitBtn" class="btn btn-trial" style="width: 100%; padding: 13px 20px; font-size: 0.82rem; letter-spacing: 1.5px; font-weight: 800; cursor: pointer;">
-            <span id="trialBtnText" data-i18n="trial.btn_submit">START DOWNLOAD NOW (7.4 MB)</span>
+            <span id="trialBtnText" data-i18n="trial.btn_submit">REQUEST TRIAL ACCESS</span>
           </button>
         </form>
 
-        <div id="trialSuccessMsg" style="display: none; margin-top: 18px; padding: 14px; background: rgba(0, 210, 255, 0.12); border: 1px solid var(--cyan-accent); border-radius: 6px; text-align: center;">
-          <p style="color: #ffffff; font-weight: 700; margin-bottom: 6px;" data-i18n="trial.success_title">✓ Thank you! Your download is starting...</p>
+        <div id="trialSuccessMsg" style="display: none; margin-top: 18px; padding: 14px; background: rgba(157, 146, 87, 0.15); border: 1px solid var(--gold-primary); border-radius: 6px; text-align: center;">
+          <p style="color: #ffffff; font-weight: 700; margin-bottom: 6px;" data-i18n="trial.success_title">✓ Anforderung eingegangen</p>
           <p style="font-size: 0.82rem; color: #c4c6d2;">
-            <span data-i18n="trial.fallback_text">If the download didn't start automatically:</span><br>
-            <a href="https://github.com/vir2ose-code/TURNTABLISM-V-SCRATCH-SHOP/releases/download/1.0.0/DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe" style="color: var(--cyan-accent); text-decoration: underline; font-weight: 600;" data-i18n="trial.manual_link">Click here to download directly</a>
+            <span data-i18n="trial.maintenance_msg">Der Download wird aktuell gewartet und steht in Kürze nach dem Sicherheits-Update für Sie bereit. Wir benachrichtigen Sie per E-Mail.</span>
           </p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Interactive License Edition Selection Modal -->
   <div class="info-modal-backdrop" id="editionModal">
     <div class="info-modal-card" style="max-width: 860px; width: 95%;">
       <button class="modal-close-btn">&times;</button>
       <h3 class="modal-title"><span>vir2oseSOUND</span> • <span data-i18n="modal.edition_title">Choose Your License Edition</span></h3>
       <div class="edition-grid">
-        
-        <!-- Edition 1: Standard -->
         <div class="edition-card">
           <div class="edition-badge" data-i18n="edition.std_badge">ESSENTIAL TURNTABLISM</div>
           <h4 class="edition-name">DJ V-SCRATCH LIVE</h4>
@@ -1738,7 +1658,6 @@
           </button>
         </div>
 
-        <!-- Edition 2: Ultimate Suite -->
         <div class="edition-card featured">
           <div class="edition-badge highlight" data-i18n="edition.suite_badge">FLAGSHIP COMPLETE SUITE • BEST VALUE</div>
           <h4 class="edition-name">DJ V-SCRATCH LIVE</h4>
@@ -1757,14 +1676,10 @@
             <span data-i18n="edition.buy_suite">Buy Ultimate Suite (129,99 €)</span>
           </button>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- =========================================================================
-       FOOTER (SUBTLE, V-CHANNEL STUDIO PRO STYLE)
-       ========================================================================= -->
   <footer>
     <p class="footer-primary">&copy; 2026 <strong>vir2oseSOUND</strong> • Waldemar Krucinski (Dipl. Audio Engineer HOFA)</p>
     <p class="footer-address">Lippertweg 3 • 30419 Hannover, Germany</p>
@@ -1782,9 +1697,6 @@
     <p class="footer-sub" data-i18n="footer.sub">Authorized Reseller &amp; Merchant of Record: Paddle.com Market Ltd. • Buy it once, own it forever.</p>
   </footer>
 
-  <!-- =========================================================================
-       I18N TRANSLATION SCRIPT (EN, DE, PL)
-       ========================================================================= -->
   <script>
     const translations = {
       en: {
@@ -1807,14 +1719,13 @@
         "modal.edition_title": "Choose Your License Edition",
         "trial.modal_title": "14-Day Free Trial",
         "trial.modal_subtitle": "DJ V-SCRATCH LIVE 1.0.0 • Full Ultimate Suite Access",
-        "trial.modal_desc": "Enter your name and email to immediately download your 14-day trial installer (Windows 10/11 64-Bit, ~7.4 MB).",
+        "trial.modal_desc": "Enter your name and email to request your 14-day trial installer package.",
         "trial.name_label": "Name / DJ Alias",
         "trial.email_label": "Email Address",
         "trial.note_label": "Note / Studio Setup (Optional)",
-        "trial.btn_submit": "START DOWNLOAD NOW (7.4 MB)",
-        "trial.success_title": "✓ Thank you! Your download is starting...",
-        "trial.fallback_text": "If the download didn't start automatically:",
-        "trial.manual_link": "Click here to download directly",
+        "trial.btn_submit": "REQUEST TRIAL ACCESS",
+        "trial.success_title": "✓ Request Received",
+        "trial.maintenance_msg": "The build package is currently undergoing maintenance and will be available shortly after a security patch. We will notify you by email.",
         "edition.std_badge": "ESSENTIAL TURNTABLISM",
         "edition.std_subname": "Standard Edition",
         "edition.suite_badge": "FLAGSHIP COMPLETE SUITE • BEST VALUE",
@@ -1936,14 +1847,13 @@
         "modal.edition_title": "Wähle deine Lizenz-Edition",
         "trial.modal_title": "14-Tage Kostenlose Testversion",
         "trial.modal_subtitle": "DJ V-SCRATCH LIVE 1.0.0 • Voller Ultimate Suite Zugriff",
-        "trial.modal_desc": "Trage deinen Namen und deine E-Mail ein, um das 14-Tage-Testpaket sofort herunterzuladen (Windows 10/11 64-Bit, ~7,4 MB).",
+        "trial.modal_desc": "Trage deinen Namen und deine E-Mail ein, um dein Testpaket anzufordern.",
         "trial.name_label": "Name / DJ Name",
         "trial.email_label": "E-Mail-Adresse",
         "trial.note_label": "Notiz / Studio-Setup (Optional)",
-        "trial.btn_submit": "JETZT DOWNLOAD STARTEN (7,4 MB)",
-        "trial.success_title": "✓ Vielen Dank! Dein Download startet jetzt...",
-        "trial.fallback_text": "Falls der Download nicht automatisch startet:",
-        "trial.manual_link": "Hier klicken für direkten Download",
+        "trial.btn_submit": "TESTVERSION ANFORDERN",
+        "trial.success_title": "✓ Anforderung eingegangen",
+        "trial.maintenance_msg": "Der Download wird aktuell gewartet und steht in Kürze nach dem Sicherheits-Update für Sie bereit. Wir benachrichtigen Sie per E-Mail.",
         "edition.std_badge": "ESSENTIAL TURNTABLISM",
         "edition.std_subname": "Standard Edition",
         "edition.suite_badge": "FLAGGSCHIFF KOMPLETT-SUITE • BEST VALUE",
@@ -2065,14 +1975,13 @@
         "modal.edition_title": "Wybierz Swoją Edycję Licencji",
         "trial.modal_title": "14-Dniowa Darmowa Wersja Próbna",
         "trial.modal_subtitle": "DJ V-SCRATCH LIVE 1.0.0 • Pełny Dostęp Ultimate Suite",
-        "trial.modal_desc": "Wpisz swoje imię i adres e-mail, aby natychmiast pobrać 14-dniowy pakiet instalacyjny (Windows 10/11 64-Bit, ~7.4 MB).",
+        "trial.modal_desc": "Wpisz swoje imię i adres e-mail, aby poprosić o pakiet instalacyjny.",
         "trial.name_label": "Imię / Pseudonim DJ",
         "trial.email_label": "Adres E-Mail",
         "trial.note_label": "Notatka / Sprzęt Studyjny (Opcjonalnie)",
-        "trial.btn_submit": "ROZPOCZNIJ POBIERANIE (7.4 MB)",
-        "trial.success_title": "✓ Dziękujemy! Pobieranie rozpoczyna się...",
-        "trial.fallback_text": "Jeśli pobieranie nie rozpoczęło się automatycznie:",
-        "trial.manual_link": "Kliknij tutaj, aby pobrać bezpośrednio",
+        "trial.btn_submit": "POPROŚ O WERSJĘ PRÓBNĄ",
+        "trial.success_title": "✓ Zgłoszenie przyjęte",
+        "trial.maintenance_msg": "Pakiet instalacyjny jest obecnie aktualizowany i będzie dostępny po wdrożeniu poprawki. Poinformujemy Cię mailowo.",
         "edition.std_badge": "ESSENTIAL TURNTABLISM",
         "edition.std_subname": "Standard Edition",
         "edition.suite_badge": "FLAGOWY PEŁNY PAKIET • NAJLEPSZY WYBÓR",
@@ -2205,7 +2114,6 @@
       });
     });
 
-    // Initial Language: EN as Primary, or saved preference, or browser language
     const savedLang = localStorage.getItem('vir2ose_lang');
     if (savedLang && translations[savedLang]) {
       setLanguage(savedLang);
@@ -2213,9 +2121,6 @@
       setLanguage('en');
     }
 
-    /* =========================================================================
-       SCROLL-STAGED AMBIENT BACKGROUND VIDEO CROSSFADER
-       ========================================================================= */
     const bgVideos = [
       document.getElementById('bgVideo1'),
       document.getElementById('bgVideo2'),
@@ -2223,14 +2128,12 @@
       document.getElementById('bgVideo4')
     ];
 
-    // Ensure all videos play silently without user gesture blocks
     bgVideos.forEach(vid => {
       if (vid) {
-        vid.playbackRate = 0.85; // Slightly slower cinematic pace
+        vid.playbackRate = 0.85;
         const playPromise = vid.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
-            // Autoplay policy fallback: re-trigger on first interaction
             window.addEventListener('touchstart', () => vid.play(), { once: true });
             window.addEventListener('scroll', () => vid.play(), { once: true });
           });
@@ -2246,11 +2149,6 @@
 
       const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
 
-      // 4 Video stages across total page depth:
-      // Stage 0 (0% - 25%): Hero & Core Console (Video 1)
-      // Stage 1 (25% - 50%): V-Chopper & Performance (Video 2)
-      // Stage 2 (50% - 75%): V-Sphere 3D & V-Video (Video 3)
-      // Stage 3 (75% - 100%): Tools & Specs (Video 4)
       let targetIndex = 0;
       if (progress < 0.25) {
         targetIndex = 0;
@@ -2287,12 +2185,8 @@
       }
     }, { passive: true });
 
-    // Initial check
     updateBackgroundVideoOnScroll();
 
-    /* =========================================================================
-       MOBILE & TABLET HAMBURGER DRAWER INTERACTION
-       ========================================================================= */
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileDrawer = document.getElementById('mobileDrawer');
     const drawerBackdrop = document.getElementById('drawerBackdrop');
@@ -2305,7 +2199,7 @@
         drawerBackdrop.classList.add('active');
         hamburgerBtn.classList.add('active');
         hamburgerBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden'; // prevent bg scroll while drawer is open
+        document.body.style.overflow = 'hidden';
       } else {
         mobileDrawer.classList.remove('open');
         drawerBackdrop.classList.remove('active');
@@ -2327,9 +2221,6 @@
       link.addEventListener('click', () => toggleMobileDrawer(false));
     });
 
-    /* =========================================================================
-       JUMP TO TOP BUTTON INTERACTION
-       ========================================================================= */
     const jumpToTopBtn = document.getElementById('jumpToTopBtn');
     if (jumpToTopBtn) {
       window.addEventListener('scroll', () => {
@@ -2345,9 +2236,6 @@
       });
     }
 
-    /* =========================================================================
-       INFO MODALS (ABOUT, HELP, UPDATE) INTERACTION
-       ========================================================================= */
     document.querySelectorAll('.modal-trigger').forEach(trigger => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
@@ -2379,9 +2267,7 @@
       });
     });
 
-    /* =========================================================================
-       14-DAY TRIAL WEB3FORMS & INSTANT DOWNLOAD HANDLER
-       ========================================================================= */
+    // 14-DAY TRIAL WEB3FORMS: Download blockiert / Nur Vorregistrierung
     const trialForm = document.getElementById('trialDownloadForm');
     if (trialForm) {
       trialForm.addEventListener('submit', async function(e) {
@@ -2390,13 +2276,11 @@
         const btnText = document.getElementById('trialBtnText');
         const successMsg = document.getElementById('trialSuccessMsg');
 
-        if (btnText) btnText.textContent = '... Preparing Download ...';
+        if (btnText) btnText.textContent = '... Senden ...';
         if (submitBtn) {
           submitBtn.style.opacity = '0.7';
           submitBtn.disabled = true;
         }
-
-        const downloadUrl = 'https://github.com/vir2ose-code/TURNTABLISM-V-SCRATCH-SHOP/releases/download/1.0.0/DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe';
 
         try {
           const formData = new FormData(trialForm);
@@ -2405,20 +2289,12 @@
             body: formData
           });
         } catch (err) {
-          console.warn('Web3Forms lead submission error:', err);
+          console.warn('Web3Forms submission error:', err);
         }
 
-        // Switch to success state
         trialForm.style.display = 'none';
         if (successMsg) successMsg.style.display = 'block';
-
-        // Trigger automatic browser download
-        const downloadLink = document.createElement('a');
-        downloadLink.href = downloadUrl;
-        downloadLink.setAttribute('download', 'DJ_V-SCRATCH_LIVE_Ultimate_Suite_Setup_v1.0.0.exe');
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+        // Download-Trigger (.exe) wurde vollständig entfernt.
       });
     }
   </script>
