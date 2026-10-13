@@ -457,6 +457,109 @@
       margin-bottom: 6px;
     }
 
+    /* =========================================================================
+       IMAGE ZOOM LIGHTBOX MODAL
+       ========================================================================= */
+    .module-preview,
+    .module-preview img,
+    .tool-img,
+    .tool-img img {
+      cursor: zoom-in;
+    }
+
+    .image-lightbox-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(3, 3, 6, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 250;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: zoom-out;
+    }
+
+    .image-lightbox-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 92vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.85);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+
+    .image-lightbox-backdrop.open .lightbox-content {
+      transform: scale(1);
+    }
+
+    #lightboxImg {
+      max-width: 90vw;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(190, 179, 118, 0.55);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 35px rgba(157, 146, 87, 0.25);
+      display: block;
+      transition: all 0.25s ease;
+    }
+
+    .lightbox-caption {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: rgba(15, 15, 24, 0.85);
+      border: 1px solid rgba(190, 179, 118, 0.5);
+      border-radius: 50%;
+      color: var(--gold-light);
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 260;
+    }
+
+    .lightbox-close-btn:hover {
+      background: rgba(190, 179, 118, 0.25);
+      color: #ffffff;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
     .cta-wrapper {
       position: relative;
       z-index: 10;
@@ -1692,6 +1795,15 @@
     </div>
   </div>
 
+  <!-- Image Zoom Lightbox Modal -->
+  <div class="image-lightbox-backdrop" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Image Zoom">
+    <button class="lightbox-close-btn" aria-label="Close Zoom">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Enlarged View">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
   <footer>
     <p class="footer-primary">&copy; 2026 <strong>vir2oseSOUND</strong> • Waldemar Krucinski (Dipl. Audio Engineer HOFA)</p>
     <p class="footer-address">Lippertweg 3 • 30419 Hannover, Germany</p>
@@ -2330,6 +2442,77 @@
         document.body.removeChild(downloadLink);
       });
     }
+
+    /* =========================================================================
+       IMAGE ZOOM LIGHTBOX INTERACTION
+       ========================================================================= */
+    const imageLightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+
+    function openImageLightbox(imgEl, captionText) {
+      if (!imageLightbox || !lightboxImg || !imgEl) return;
+      lightboxImg.src = imgEl.currentSrc || imgEl.src;
+      lightboxImg.alt = imgEl.alt || captionText || 'Enlarged View';
+      if (lightboxCaption) {
+        lightboxCaption.textContent = captionText || imgEl.alt || '';
+      }
+      imageLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageLightbox() {
+      if (!imageLightbox) return;
+      imageLightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (!imageLightbox.classList.contains('open') && lightboxImg) {
+          lightboxImg.src = '';
+        }
+      }, 300);
+    }
+
+    if (imageLightbox) {
+      imageLightbox.addEventListener('click', (e) => {
+        // Schließt das Bild sofort, wenn man neben das Bild (Backdrop) oder den X-Button klickt
+        if (e.target === imageLightbox || e.target === lightboxCloseBtn || e.target.classList.contains('lightbox-content')) {
+          closeImageLightbox();
+        }
+      });
+      if (lightboxCloseBtn) {
+        lightboxCloseBtn.addEventListener('click', closeImageLightbox);
+      }
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imageLightbox.classList.contains('open')) {
+          closeImageLightbox();
+        }
+      });
+    }
+
+    // Zoom-Klick auf alle Feature-Module & Tools-Kästchen
+    document.querySelectorAll('.module-preview, .tool-img').forEach(container => {
+      container.addEventListener('click', () => {
+        const img = container.querySelector('img');
+        if (!img) return;
+
+        let caption = '';
+        const toolBox = container.closest('.tool-box');
+        if (toolBox) {
+          const titleEl = toolBox.querySelector('.tool-body h4');
+          if (titleEl) caption = titleEl.textContent;
+        } else {
+          const moduleCard = container.closest('.module-card');
+          if (moduleCard) {
+            const titleEl = moduleCard.querySelector('.module-info h3');
+            if (titleEl) caption = titleEl.textContent;
+          }
+        }
+        if (!caption) caption = img.alt || '';
+
+        openImageLightbox(img, caption);
+      });
+    });
   </script>
 </body>
 </html>
